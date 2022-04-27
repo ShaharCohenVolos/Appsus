@@ -1,3 +1,6 @@
 :root {
-  --bgclr: rgb(32, 32, 32);
+  --bgclr: whitesmoke;
+  --fontclr: rgb(32, 32, 32);
+
+  --clr1: rgb(32, 32, 32);
 }

@@ -1,0 +1,34 @@
+.email-preview {
+  display: flex;
+  padding: .6em;
+  border-block-start: var(--clr1) 1px solid;
+  cursor: pointer;
+}
+
+.email-preview:last-child {
+  border-block-end: var(--clr1) 1px solid;
+}
+
+.email-preview:hover {
+  background-color: lightgrey;
+}
+
+.email-preview .author-name {
+  flex-basis: 10%;
+  font-size: 1rem;
+}
+
+.email-preview .subject {
+  font-size: 1rem;
+}
+
+
+.email-preview .body {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: unset;
+}
+
+.email-preview .body::before {
+  content: '\00A0 - ';
+}
