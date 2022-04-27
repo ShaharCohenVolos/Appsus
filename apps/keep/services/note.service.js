@@ -13,6 +13,9 @@ const gKeeps = [
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby!"
+        },
+        style: {
+        bgc: "#B22222"
         }
     },
     {
@@ -23,7 +26,7 @@ const gKeeps = [
             title: "Bobi and Me"
         },
         style: {
-            backgroundColor: "#00d"
+            bgc: "#B0E0E6"
         }
     },
     {
@@ -35,6 +38,9 @@ const gKeeps = [
                 { txt: "Driving liscence", doneAt: null },
                 { txt: "Coding power", doneAt: 187111111 }
             ]
+        },
+        style: {
+        bgc: "#2E8B57"
         }
     }
 ]
@@ -46,8 +52,13 @@ function query(filterBy){
         keeps = gKeeps
         _saveToStorage(keeps)
     }
-    // let keeps = gKeeps
     
+    if(filterBy) {
+        let type = filterBy
+        keeps = keeps.filter(keep => {
+            return keep.type === type
+        })
+    }
 
     return Promise.resolve(keeps)
 }

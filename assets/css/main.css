@@ -1,5 +1,14 @@
+/* Basics */
 @import './basics/base.css';
 @import './setup/vars.css';
 
+/* Email App */
 @import '../../apps/mail/assets/css/cmps/email-list.css';
 @import '../../apps/mail/assets/css/cmps/email-preview.css';
+
+/* Keep App */
+@import '../../apps/keep/assets/css/keep-app.css';
+@import '../../apps/keep/assets/css/cmps/keep-list.css';
+@import '../../apps/keep/assets/css/cmps/keep-preview.css';
+@import '../../apps/keep/assets/css/cmps/keep-sidebar.css';
+
