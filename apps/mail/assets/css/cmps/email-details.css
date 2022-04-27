@@ -1,0 +1,67 @@
+.email-details header {
+  /* background-color: lightgrey; */
+  display: flex;
+  justify-content: space-between;
+  padding: 4.5em;
+}
+
+.email-details header div {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-details header .author-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .625em
+}
+
+.email-details .sent-at {
+  font-size: .8rem;
+  font-weight: unset;
+  color: var(--clr3);
+}
+
+.email-details .delete-btn {
+  background: none;
+  border: none;
+  color: var(--clr3);
+}
+
+.email-details .delete-btn:hover {
+  color: var(--brndclr);
+}
+
+.email-details .delete-btn::before {
+  font-family: 'fa-solid';
+  content: '\f1f8';
+  font-size: 25px;
+}
+
+.email-details .subject {
+  font-size: 2rem;
+}
+
+.email-details .author-name {
+  font-size: 1.2rem;
+}
+
+.email-details .author-email {
+  font-size: 1rem;
+  color: var(--clr3);
+  font-weight: unset;
+}
+
+.email-details .author-email::before {
+  content: '<';
+}
+
+.email-details .author-email::after {
+  content: '>';
+}
+
+.email-details .body {
+  padding-left: 9.75em;
+  padding-right: 9.75em;
+}

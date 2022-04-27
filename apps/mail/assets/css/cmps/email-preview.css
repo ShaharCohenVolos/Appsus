@@ -40,7 +40,7 @@
 
 
 .email-preview.read {
-  background-color: var(--clr2);
+  background-color: var(--clr4);
 }
 
 .email-preview.read>* {
