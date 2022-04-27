@@ -1,4 +1,5 @@
-.app-header {
+.email-filter {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,14 +9,14 @@
   gap: .625em;
 }
 
-.app-header .email-filter {
+.email-filter {
   height: 100%;
   width: 500px;
   display: flex;
   width: 700px;
 }
 
-.app-header .email-filter input {
+.email-filter input {
   width: 100%;
   border-radius: 10px;
   border-top-right-radius: 0;
@@ -26,7 +27,7 @@
 
 }
 
-.app-header .email-filter select {
+.email-filter select {
   border: 1px solid var(--clr2);
   border-radius: 10px;
   border-top-left-radius: 0;

@@ -35,8 +35,8 @@
 
 .email-details .delete-btn::before {
   font-family: 'fa-solid';
-  content: '\f2ed';
-  font-size: 30px;
+  content: '\f1f8';
+  font-size: 25px;
 }
 
 .email-details .subject {

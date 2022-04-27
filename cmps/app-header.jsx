@@ -1,3 +1,5 @@
+import { EmailFilter } from '../apps/mail/cmps/email-filter.jsx'
+
 const { NavLink } = ReactRouterDOM
 
 export class AppHeader extends React.Component {
@@ -6,7 +8,7 @@ export class AppHeader extends React.Component {
   render() {
     return <header className="app-header">
       <h1>Appsus</h1>
-      <input type="Search" placeholder="Search" />
+      <EmailFilter />
       <nav>
         <NavLink to="/" exact>Home</NavLink>
         <NavLink to="/about">About</NavLink>
