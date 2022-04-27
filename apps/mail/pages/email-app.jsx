@@ -17,9 +17,8 @@ export class EmailApp extends React.Component {
   render() {
     const { emails } = this.state
 
-    if (!emails) return <React.Fragment />
+    if (!emails) return <h1>Loading...</h1>
     return <section className="email-app">
-      <EmailHeader />
       <EmailList emails={emails} />
     </section>
 
