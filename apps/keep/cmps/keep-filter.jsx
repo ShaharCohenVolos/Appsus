@@ -1,6 +1,7 @@
 export class KeepFilter extends React.Component {
   state = {
     filterBy: null,
+    activeBtn: '',
   };
 
   onSetFilterBy = ({ target }) => {
@@ -12,6 +13,7 @@ export class KeepFilter extends React.Component {
   };
 
   render() {
+    const {activeBtn} = this.state 
     return (
       <aside className="filter-bar">
 

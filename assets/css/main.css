@@ -1,6 +1,7 @@
 /* Basics */
 @import './basics/base.css';
 @import './setup/vars.css';
+@import './setup/fonts/fonts.css';
 
 /* Email App */
 @import '../../apps/mail/assets/css/cmps/email-list.css';
