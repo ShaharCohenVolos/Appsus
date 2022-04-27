@@ -2,6 +2,7 @@ import { storageService } from "../../../services/storage.service.js"
 
 export const keepService = {
     query,
+    getFromId,
 }
 
 const KEEP_STORAGE_KEY = 'keepBD'
@@ -61,6 +62,12 @@ function query(filterBy){
     }
 
     return Promise.resolve(keeps)
+}
+
+function getFromId(id){
+    const keeps = _loadFromStorage()
+    const keep = keeps.find(keep => keep.id === id)
+    return Promise.resolve(keep)
 }
 
 function _saveToStorage(keeps) {

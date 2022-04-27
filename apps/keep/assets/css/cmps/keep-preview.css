@@ -1,5 +1,17 @@
 
 
 .keep-preview{
-    
+    text-align: center;
+    padding:2px;
+    border-radius: 5px;
+    margin-inline-end: 5px;
+    display: grid;
+    place-content: center;
+}
+
+.keep-preview ul {
+    padding: 0;
+    margin: 0;
+    width:100%;
+    list-style-position: outside;
 }
