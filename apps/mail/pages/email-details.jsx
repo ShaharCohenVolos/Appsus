@@ -24,7 +24,8 @@ export class EmailDetails extends React.Component {
     if (!email) return <h1>Loading...</h1>
 
     return <section className="email-details">
-      <h1>{email.authorName}</h1>
+      <h1>{email.subject}</h1>
+      <h2>{email.authorName}</h2>
     </section>
   }
 }
