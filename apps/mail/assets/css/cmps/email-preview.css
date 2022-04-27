@@ -6,11 +6,6 @@
   white-space: nowrap;
   min-width: 500px;
   color: var(--clr1);
-  gap: .625em;
-}
-
-.email-preview:last-child {
-  border-block-end: var(--clr2) 1px solid;
 }
 
 .email-preview:hover {
@@ -33,6 +28,10 @@
   font-weight: unset;
   color: var(--clr3);
   overflow: hidden;
+}
+
+.email-preview .sent-at {
+  padding-inline-start: .625em;
 }
 
 .email-preview .body::before {
