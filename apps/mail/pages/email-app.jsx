@@ -1,9 +1,6 @@
 import { emailService } from '../services/email.service.js'
 
-// import { EmailHeader } from '../cmps/email-header.jsx'
-// import { EmailFilter } from '../cmps/email-filter.jsx'
 import { EmailList } from '../cmps/email-list.jsx'
-import { AppHeader } from '../../../cmps/app-header.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -33,7 +30,6 @@ export class EmailApp extends React.Component {
 
     if (!emails) return <h1>Loading...</h1>
     return <section className="email-app">
-      <AppHeader />
       <EmailList emails={emails} />
     </section>
 
