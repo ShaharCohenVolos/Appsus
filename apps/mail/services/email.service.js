@@ -4,6 +4,7 @@ import { storageService } from '../../../services/storage.service.js'
 export const emailService = {
   query,
   getById,
+  changeReadStatus,
 }
 
 const KEY = 'emailDB'
@@ -25,6 +26,13 @@ function getById(emailId) {
   const emails = _loadFromStorage()
   const email = emails.find(email => email.id === emailId)
   return Promise.resolve(email)
+}
+
+function changeReadStatus(emailId, isRead) {
+  const emails = _loadFromStorage()
+  const email = emails.find(email => email.id === emailId)
+  email.isRead = isRead
+  _saveToStorage(emails)
 }
 
 function _makeEmail(subject, body, to, authorName, authorEmail, sentAt = Date.now()) {
