@@ -9,6 +9,7 @@ export class AppHeader extends React.Component {
         <NavLink to="/" exact>Home</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/mail">Mail</NavLink>
+        <NavLink to="/keep">Keep</NavLink>
       </nav>
     </header>
   }
