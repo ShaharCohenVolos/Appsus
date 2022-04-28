@@ -6,13 +6,9 @@ const { Route } = ReactRouterDOM
 
 export function AppAside() {
   return <aside className="app-aside">
-<<<<<<< HEAD
-    {/* <EmailFolderList /> */}
-    <KeepNavList/>
-=======
     <Route path="/email" component={EmailCompose} />
+    <Route path="/keep" component={KeepNavList}/>
     <Route path="/email" component={EmailFolderList} />
->>>>>>> 4d7bea9942b7090a415ef0937a3e451b8bb2f6fe
   </aside>
 }
 

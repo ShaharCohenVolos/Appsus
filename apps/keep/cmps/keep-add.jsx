@@ -1,5 +1,6 @@
 import {keepService} from '../services/note.service.js'
 import {utilService} from '../../../services/util.service.js'
+import {KeepAddBar} from './keep-add-bar.jsx'
 
 export class KeepAdd extends React.Component {
   state = {
@@ -15,6 +16,7 @@ export class KeepAdd extends React.Component {
         bgc: utilService.generateRandomColor()
       }
      },
+     isFocused: false,
   }
     
   handleChange = ({target}) => {
@@ -26,19 +28,29 @@ export class KeepAdd extends React.Component {
   onAdd = (ev) =>{
     ev.preventDefault()
     keepService.saveKeep(this.state.keep)
-      // .then(() => {
-      //   this.props.heistory.push('/keep')
-      // })
+
+  }
+
+  onCreate = (val) => {
+    this.setState({isFocused: val})
   }
   
   
   render() {
-    const {keep} = this.state
+    const {keep, isFocused} = this.state
       return <section className="keep-add">
         <form onSubmit={this.onAdd}>
+          <div>
+
           <input type="text" name="subject" 
           value={keep.subject} placeholder="Title" 
-          onChange={this.handleChange}/>
+          onChange={this.handleChange} 
+          onFocus={() => this.onCreate(true)}
+          />
+
+          {isFocused && <KeepAddBar />}
+          </div>
+
           <button>Add</button>
         </form>
       </section>
