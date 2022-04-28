@@ -4,6 +4,7 @@ export const keepService = {
     query,
     getFromId,
     remove,
+    saveKeep,
 }
 
 const KEEP_STORAGE_KEY = 'keepBD'
@@ -76,6 +77,17 @@ function remove(id) {
     keeps = keeps.filter(keep => keep.id !== id)
     _saveToStorage(keeps)
 
+    return Promise.resolve()
+}
+
+function saveKeep(keep){
+    return _add(keep)
+}
+
+function _add(keep){
+    let keeps = _loadFromStorage()
+    keeps = [keep, ... keeps]
+    _saveToStorage(keeps)
     return Promise.resolve()
 }
 

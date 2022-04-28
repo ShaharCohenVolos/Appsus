@@ -1,27 +1,32 @@
-export class KeepFilter extends React.Component {
+const { NavLink } = ReactRouterDOM;
+
+export class KeepNav extends React.Component {
   state = {
     filterBy: null,
-    activeBtn: '',
+    activeBtn: {
+      btn1: 'nav-btn',
+      btn2: 'nav-btn',
+      btn3: 'nav-btn',
+      btn4: 'nav-btn',
+    }
   };
 
   onSetFilterBy = ({ target }) => {
     const val = target.value;
-    this.setState({filterBy: target.value}, 
-      () => {this.props.onFilter(this.state.filterBy)})
-
-
+    this.setState({ filterBy: target.value }, () => {
+      this.props.onFilter(this.state.filterBy);
+    });
   };
 
   render() {
-    const {activeBtn} = this.state 
+    const { activeBtn } = this.state;
     return (
-      <aside className="filter-bar">
-
+      <aside className="keep-nav">
         <ul>
           <li>
-            <button value="" onClick={this.onSetFilterBy}>
-              All Keeps
-            </button>
+              <button value=""  onClick={this.onSetFilterBy}>
+                All Keeps
+              </button>
           </li>
           <li>
             <button value="note-txt" onClick={this.onSetFilterBy}>

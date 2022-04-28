@@ -2,3 +2,9 @@
   font-family: fa-solid;
   src: url('../../fonts/font-awesome/fa-solid-900.ttf');
 }
+
+
+@font-face {
+  font-family: fa-regular;
+  src: url('../../fonts/font-awesome/fa-regular-400.ttf');
+}

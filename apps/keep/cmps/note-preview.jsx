@@ -4,18 +4,13 @@ import { KeepTodo } from "./keep-type/keep-todo.jsx";
 import {keepService} from "../services/note.service.js";
 import {eventBusService} from "../../../services/event-bus-service.js";
 
-const { Link } = ReactRouterDOM;
+const { NavLink, Link } = ReactRouterDOM;
 
 export class KeepPreview extends React.Component {
 
   sate= {
     keep: null
   }
-
-  // loadKeep = () => {
-  //   const {keep} = this.props
-  //   this.setState({keep})
-  // }
 
   onRemoveKeep = () => {
     keepService.remove(this.props.keep.id)
@@ -34,7 +29,7 @@ export class KeepPreview extends React.Component {
         className="keep-preview"
         style={{ backgroundColor: keep.style.bgc }}
       >
-        <Link to={`/keep/${keep.id}`}>
+        <NavLink to={`/keep/${keep.id}`} className="keep-body">
           {keep.type === "note-txt" ? (
             <KeepTxt keep={keep} />
           ) : keep.type === "note-img" ? (
@@ -44,12 +39,12 @@ export class KeepPreview extends React.Component {
           ) : (
             ""
           )}
-        </Link>
+        </NavLink>
 
-        <div>
-          <button onClick={this.onRemoveKeep}>Remove</button>
+        <div className="btns">
+          <button className="delete-btn" onClick={this.onRemoveKeep}></button>
           <Link to={`keep/edit/${keep.id}`}>
-            <button>Edit</button>
+            <button className="edit-btn">Edit</button>
           </Link>
         </div>
       </article>
