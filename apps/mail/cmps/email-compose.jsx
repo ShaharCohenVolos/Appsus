@@ -1,3 +1,5 @@
+import { eventBusService } from '../../../services/event-bus-service.js'
+
 export class EmailCompose extends React.Component {
 
   state = {
@@ -18,8 +20,11 @@ export class EmailCompose extends React.Component {
     this.setState({ email: null })
   }
 
-  onSendMail = () => {
+  onSendMail = (ev) => {
+    ev.preventDefault()
     console.log(this.state.email)
+    eventBusService.emit('send-email', this.state.email)
+    this.setState({ email: null })
   }
 
   render() {
@@ -30,7 +35,7 @@ export class EmailCompose extends React.Component {
       {email && <form onSubmit={this.onSendMail}>
         <header className="form-header">
           <h1>New Email</h1>
-          <button className="close-btn" onClick={this.onStopComposing}></button>
+          <button className="close-btn" type="button" onClick={this.onStopComposing}></button>
         </header>
         <main className="form-body">
           <input className="to" type="email" name="to" placeholder="Recipients" onChange={this.handleChange} />
