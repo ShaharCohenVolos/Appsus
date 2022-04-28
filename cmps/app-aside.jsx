@@ -1,9 +1,10 @@
 import { EmailFolderList } from '../apps/mail/cmps/email-folder-list.jsx'
 
-const { NavLink } = ReactRouterDOM
+const { Route } = ReactRouterDOM
 
 export function AppAside() {
   return <aside className="app-aside">
-    <EmailFolderList />
+    <Route path="/email" component={EmailFolderList} />
   </aside>
 }
+
