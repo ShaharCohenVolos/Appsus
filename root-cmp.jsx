@@ -21,6 +21,7 @@ export function App() {
       <Route path="/keep/edit/:keepId" component={KeepEdit} />
       <Route path="/keep/:filter/:keepId" component={KeepDetails} />
       <Route path="/keep/:filter" component={AppKeep} />
+      <Route path="/keep" component={AppKeep} />
       <Route path="/about" component={About} />
       <Route path="/" component={Home} />
     </Switch>

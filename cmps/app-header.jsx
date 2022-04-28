@@ -9,7 +9,6 @@ export class AppHeader extends React.Component {
     return <header className="app-header">
       <h1 className="logo">Appsus</h1>
       <Route path="/email" component={EmailFilter} />
-
       <div className="drop-down">
         <nav className="drop-down-content">
           <NavLink to="/" exact> Home </NavLink>
