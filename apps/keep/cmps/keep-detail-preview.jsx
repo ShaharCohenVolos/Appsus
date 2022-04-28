@@ -1,6 +1,6 @@
-import {NoteDetails} from './note-details.jsx'
-import {ImgDetails} from './img-details.jsx'
-import {TodoDetails} from './todo-details.jsx'
+import {NoteDetails} from './keep-type/note-details.jsx'
+import {ImgDetails} from './keep-type/img-details.jsx'
+import {TodoDetails} from './keep-type/todo-details.jsx'
 
 
 export function KeepDetailsPreview({keep}){

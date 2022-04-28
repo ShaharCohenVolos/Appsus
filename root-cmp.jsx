@@ -5,6 +5,7 @@ import { EmailApp } from './apps/mail/pages/email-app.jsx'
 import { EmailDetails } from './apps/mail/pages/email-details.jsx'
 import { AppKeep } from './apps/keep/pages/app-keep.jsx'
 import { KeepDetails } from './apps/keep/pages/keep-details.jsx'
+import { KeepEdit } from './apps/keep/cmps/keep-edit.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -14,7 +15,8 @@ export function App() {
     <AppHeader />
     <Switch>
       <Route path="/email/:folder/:emailId" component={EmailDetails} />
-      <Route path="/email/:folder" component={EmailApp} />
+      <Route path="/email/:folder/" component={EmailApp} />
+      <Route path="/keep/edit/:keepId" component={KeepEdit} />
       <Route path="/keep/:keepId" component={KeepDetails} />
       <Route path="/keep" component={AppKeep} />
       <Route path="/about" component={About} />
