@@ -18,23 +18,6 @@
   }
 }
 
-.app-header .filter {
-  order: 2;
-  width: 100%;
-
-}
-
-.app-header .filter input {
-  padding: .625em;
-}
-
-@media screen and (min-width: 800px) {
-  .app-header .filter {
-    order: 0;
-    width: 700px;
-  }
-}
-
 .app-header .drop-down {
   position: relative;
   font-size: 2em;

@@ -4,7 +4,6 @@
   padding: .625em;
   border-block-end: var(--clr2) 1px solid;
   cursor: pointer;
-  min-width: 500px;
   color: var(--clr1);
   white-space: nowrap;
   gap: .625em;
@@ -40,7 +39,7 @@
   font-size: 1rem;
   font-weight: unset;
   color: var(--clr3);
-  width: 400px;
+  width: 320px;
 }
 
 @media screen and (min-width:800px) {
