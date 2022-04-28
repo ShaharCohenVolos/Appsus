@@ -1,6 +1,13 @@
 .keep-app{
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    place-content: center;
-    place-items: center;
+    grid-template-columns: 1fr 3fr/1fr 3fr;
+
+}
+
+.keep-header{
+    grid-area: header;
+    grid-column: 1/span 2;
+    grid-row:1;
+
+    text-align: center;
 }
