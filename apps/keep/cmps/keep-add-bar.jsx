@@ -15,7 +15,7 @@ export class KeepAddBar extends React.Component {
   render() {
     return (
       <section>
-        <textarea name="info.txt" rows="20" cols="30" onChange={this.props.handleChange}></textarea>
+        <textarea name="info" rows="20" cols="30" onChange={this.props.handleChange}></textarea>
         <div className="edit-container">
           <select onChange={this.props.handleChange} name="keepType">
             <option value="note-txt">Note</option>

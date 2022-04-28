@@ -48,7 +48,7 @@ export class KeepAdd extends React.Component {
           onFocus={() => this.onCreate(true)}
           />
 
-          {isFocused && <KeepAddBar />}
+          {isFocused && <KeepAddBar handleChange={this.handleChange}/>}
           </div>
 
           <button>Add</button>

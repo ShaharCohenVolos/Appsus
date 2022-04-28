@@ -45,7 +45,7 @@ export class KeepPreview extends React.Component {
 
         <div className="btns">
           <button className="delete-btn" onClick={this.onRemoveKeep}></button>
-          <Link to={`keep/edit/${keep.id}`}>
+          <Link to={`/keep/edit/${keep.id}`}>
             <button className="edit-btn">Edit</button>
           </Link>
         </div>
