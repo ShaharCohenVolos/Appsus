@@ -1,48 +1,53 @@
-// import {utilService} from '../../../services/util.service'
+import {utilService} from '../../../services/util.service.js'
+import {keepService} from '../services/note.service.js'
 
-// export class KeepEdit extends React.Component{
+export class KeepEdit extends React.Component{
 
-//     state = {
-//         keep: {
-//             // id: utilService.makeId(),
-//             subject: '',
-//             type: 'note-txt',
-//             isPinned: false,
-//             body: 'Fullstack Me Baby!',
-//             style:{
-//                 // bgc: utilService.generateRandomColor()
-//             }
-//         }
-//     }
+    state = {
+        keep: null
+    }
 
+    componentDidMount() {
+        this.loadKeep()
+    }
 
-//     handleChange = ({target}) => {
-//         const field = target.name
-//         const value = target.value
-//         this.setState((prevState) => ({keep: {...prevState.keep, [field]:value}}))
-//     }
+    loadKeep = () => {
+        const {keepId} = this.props.match.params
+        keepService.getFromId(keepId)
+          .then(keep => {
+              if(!keep) return this.props.history.push('/')
+              this.setState({keep})
+          })
+          
+    }
 
-//     onSaveKeep = (ev) => {
-//         ev.preventDefault()
-//         console.log(this.state.keep)
-//     }
+    handleChange = ({target}) => {
+        const field = target.name
+        const value = target.value
+        this.setState((prevState) => ({keep: {...prevState.keep, [field]:value}}))
+    }
 
-//     render() {
-//         const {type, body, subject} = this.state.keep
+    onSaveKeep = (ev) => {
+        ev.preventDefault()
+        console.log(this.state.keep)
+    }
 
-//         return <section className="keep-edit">
-//             <form onSubmite={this.onSaveKeep}>
-//             <label>Subject
-//                 <input name="subject" type="text" onChange={this.handleChange}
-//                 value={subject} placeholder="Subject"></input>
-//             </label>
+    render() {
+        const {keep} = this.state
+        if(!keep) return <img src="../../../assets/img/loader.gif"/>
+        const subj = (!keep.subject) ? 'Subject' : keep.subject
 
-//             <label>Type
-//                 <select name="type" onChange={this.handleChange}>
-//                     <option value={type}>Text</option>
-//                 </select>
-//             </label>
-//             </form>
-//         </section>
-//     }
-// }
+        return <section className="keep-edit">
+            <form onSubmit={this.onSaveKeep}>
+            <label>Subject: 
+                <input name="subject" type="text" onChange={this.handleChange}
+                value={subj} placeholder={subj}></input>
+            </label>
+
+            
+
+            <button>Update</button>
+            </form>
+        </section>
+    }
+}

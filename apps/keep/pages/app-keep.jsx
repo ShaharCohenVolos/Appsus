@@ -1,7 +1,7 @@
 import { KeepList } from "../cmps/note-list.jsx"
 import { keepService } from "../services/note.service.js"
 import {KeepFilter} from "../cmps/keep-filter.jsx"
-// import {KeepEdit} from "../cmps/keep-edit.jsx"
+import {keepHeader} from '../cmps/keep-header.jsx'
 
 const {NavLink, Route} = ReactRouterDOM
 
@@ -39,7 +39,7 @@ export class AppKeep extends React.Component {
         {/* <Route path="/keep/edit" component={KeepEdit}/> */}
 
         <KeepFilter onFilter={this.onFilter}/>
-        <KeepList keeps={keeps} />
+        <KeepList keeps={keeps} loadKeeps={this.loadKeeps}/>
       </section>
     )
   }

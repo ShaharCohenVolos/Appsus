@@ -1,4 +1,3 @@
-import { KeepTodo } from "./keep-todo";
 
 export function ImgDetails({keep}){
     // console.log(keep)

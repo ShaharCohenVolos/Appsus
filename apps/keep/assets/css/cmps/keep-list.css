@@ -1,8 +1,9 @@
 .keep-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20%, 30%));  
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
     max-width:60vh;
     min-height: 70vh;
+
     place-content: center;
     margin:auto;
 }
