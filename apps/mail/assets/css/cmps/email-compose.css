@@ -1,0 +1,89 @@
+.email-compose .compose-btn {
+  background: none;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  border-radius: 6rem;
+  border: none;
+  align-self: start;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  box-shadow: 0 0 4px 0 var(--clr1);
+  transition: .2s;
+  margin: 1em;
+}
+
+.email-compose .compose-btn:hover {
+  box-shadow: 0 0 8px 0 var(--clr1);
+}
+
+.email-compose .compose-btn .plus::before {
+  font-size: 3em;
+  font-family: fa-bold;
+  color: var(--brndclr);
+  content: '\2b';
+}
+
+.email-compose form {
+  height: 600px;
+  width: 600px;
+  background-color: var(--bgclr);
+  position: fixed;
+  bottom: 0;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 4px 0 var(--clr1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.email-compose .form-header {
+  display: flex;
+  justify-content: space-between;
+  padding: .625em;
+  background-color: var(--clr1);
+  color: var(--clr2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.email-compose .close-btn {
+  background: none;
+  border: none;
+  color: var(--clr2)
+}
+
+.email-compose .close-btn:hover {
+  background-color: var(--clr3);
+}
+
+.email-compose .close-btn::before {
+  font-family: fa-solid;
+  content: '\58'
+}
+
+.email-compose .form-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: .625em;
+  gap: .625em
+}
+
+.email-compose input {
+  padding: .625em;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--clr2);
+  outline: none;
+}
+
+.email-compose .body {
+  flex-grow: 1;
+  /* font-size: 1rem; */
+  font-family: sans-serif;
+  border: none;
+  outline: none;
+  resize: none;
+}

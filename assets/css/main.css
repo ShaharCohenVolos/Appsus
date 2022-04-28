@@ -15,6 +15,7 @@
 @import '../../apps/mail/assets/css/cmps/email-details.css';
 @import '../../apps/mail/assets/css/cmps/email-filter.css';
 @import '../../apps/mail/assets/css/cmps/email-folder-list.css';
+@import '../../apps/mail/assets/css/cmps/email-compose.css';
 
 /* Keep App */
 @import '../../apps/keep/assets/css/keep-app.css';
