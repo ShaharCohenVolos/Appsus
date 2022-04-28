@@ -1,10 +1,10 @@
-import { KeepList } from "../cmps/note-list.jsx"
-import { keepService } from "../services/note.service.js"
-import {KeepNav} from "../cmps/keep-nav.jsx"
-import {KeepAdd} from '../cmps/keep-add.jsx'
+import { KeepList } from "../cmps/note-list.jsx";
+import { keepService } from "../services/note.service.js";
+import { KeepNavList } from "../cmps/keep-nav.jsx";
+import { KeepAdd } from "../cmps/keep-add.jsx";
+import { eventBusService } from "../../../services/event-bus-service.js";
 
-const {NavLink, Route} = ReactRouterDOM
-
+const { NavLink, Route } = ReactRouterDOM;
 
 export class AppKeep extends React.Component {
   state = {
@@ -13,34 +13,40 @@ export class AppKeep extends React.Component {
   };
 
   componentDidMount() {
-    this.loadKeeps()
+    this.getFilterFromParams().then(() => {
+      this.loadKeeps();
+    })
+    eventBusService.on('filter-chng', (filterBy) => {
+      this.loadKeeps(filterBy)
+    })
   }
 
-  loadKeeps = () => {
-    keepService.query(this.state.filterBy).then((keeps) => {
-      this.setState({ keeps })
-    })
+  getFilterFromParams = () => {
+    const filterBy = this.props.match.params.filter;
+    this.setState({ filterBy });
+    return Promise.resolve()
   };
 
-  onFilter = (filterBy) => {
-    this.setState({filterBy}, () => {
-      this.loadKeeps()
-    })
-  }
+  loadKeeps = (filterBy = this.state.filterBy) => {
+    keepService.query(filterBy).then((keeps) => {
+      this.setState({ keeps });
+    });
+  };
 
 
 
   render() {
-    const { keeps } = this.state
+    const { keeps } = this.state;
     return (
-      <section className="keep-app">
-        {/* <NavLink to="/keep/edit">Add Keep</NavLink> */}
+      <section className="keep-app main-layout">
 
-        {/* <Route path="/keep/edit" component={KeepEdit}/> */}
-        <KeepAdd/>
-        <KeepNav onFilter={this.onFilter}/>
-        <KeepList keeps={keeps} loadKeeps={this.loadKeeps}/>
+        <KeepAdd />
+        <KeepList
+          filter={this.state.filterBy}
+          keeps={keeps}
+          loadKeeps={this.loadKeeps}
+        />
       </section>
-    )
+    );
   }
 }

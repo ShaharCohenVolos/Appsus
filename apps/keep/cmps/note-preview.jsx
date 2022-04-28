@@ -9,7 +9,7 @@ const { NavLink, Link } = ReactRouterDOM;
 export class KeepPreview extends React.Component {
 
   sate= {
-    keep: null
+    keep: null,
   }
 
   onRemoveKeep = () => {
@@ -18,6 +18,8 @@ export class KeepPreview extends React.Component {
         this.props.loadKeeps()
       })
   }
+
+  
 
 
 

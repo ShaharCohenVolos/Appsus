@@ -56,7 +56,8 @@ function query(filterBy){
         _saveToStorage(keeps)
     }
     
-    if(filterBy) {
+    if(filterBy !== 'all') {
+
         let type = filterBy
         keeps = keeps.filter(keep => {
             return keep.type === type

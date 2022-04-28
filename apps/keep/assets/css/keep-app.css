@@ -1,18 +1,6 @@
 .keep-app{
-    margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 3fr/1fr 3fr;
-
-    grid-template-areas: 
-    "nav header"
-    "nav list"
+    grid-template-rows: 0fr 1fr ;
+    max-width: 100%;
 }
 
-.keep-header{
-    grid-area:header;
-
-}
-
-.keep-nav{
-    grid-area: nav;
-}

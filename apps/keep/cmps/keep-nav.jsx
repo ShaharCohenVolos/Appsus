@@ -1,49 +1,46 @@
+import { eventBusService } from "../../../services/event-bus-service";
+
 const { NavLink } = ReactRouterDOM;
 
-export class KeepNav extends React.Component {
+export class KeepNavList extends React.Component {
   state = {
     filterBy: null,
-    activeBtn: {
-      btn1: 'nav-btn',
-      btn2: 'nav-btn',
-      btn3: 'nav-btn',
-      btn4: 'nav-btn',
-    }
+
   };
 
-  onSetFilterBy = ({ target }) => {
-    const val = target.value;
-    this.setState({ filterBy: target.value }, () => {
-      this.props.onFilter(this.state.filterBy);
-    });
+  onSetFilterBy = (filt) => {
+    // const filterBy = this.props.match.params.filter
+    // this.setState({filterBy})
+    eventBusService.emit('filter-chng', filt)
   };
 
   render() {
     const { activeBtn } = this.state;
     return (
       <aside className="keep-nav">
-        <ul>
-          <li>
-              <button value=""  onClick={this.onSetFilterBy}>
-                All Keeps
-              </button>
-          </li>
-          <li>
-            <button value="note-txt" onClick={this.onSetFilterBy}>
-              Notes
-            </button>
-          </li>
-          <li>
-            <button value="note-img" onClick={this.onSetFilterBy}>
-              Pictures
-            </button>
-          </li>
-          <li>
-            <button value="note-todos" onClick={this.onSetFilterBy}>
-              Todo-Lists
-            </button>
-          </li>
-        </ul>
+        <div className="space-container"></div>
+        {/* <button value="" onClick={this.onSetFilterBy}>
+          All Keeps
+        </button>
+        <button value="note-txt" onClick={this.onSetFilterBy}>
+          Notes
+        </button>
+        <button value="note-img" onClick={this.onSetFilterBy}>
+          Pictures
+        </button>
+        <button value="note-todos" onClick={this.onSetFilterBy}>
+          Todo-Lists
+        </button> */}
+        <nav className="folder-nav">
+          <NavLink to="/keep/all" onClick={() => this.onSetFilterBy('all')}>
+            All Keeps</NavLink>
+          <NavLink to="/keep/note-txt" onClick={() => this.onSetFilterBy('note-txt')}>
+            Note</NavLink>
+          <NavLink to="/keep/note-img" onClick={() => this.onSetFilterBy('note-img')}>
+            Pictures</NavLink>
+          <NavLink to="/keep/note-todos" onClick={() => this.onSetFilterBy('note-todos')}>
+            Todo-Lists</NavLink>
+        </nav>
       </aside>
     );
   }
