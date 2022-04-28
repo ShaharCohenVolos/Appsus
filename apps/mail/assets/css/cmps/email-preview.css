@@ -1,11 +1,11 @@
 .email-preview {
   display: flex;
   padding: .625em;
-  border-block-start: var(--clr2) 1px solid;
+  border-block-end: var(--clr2) 1px solid;
   cursor: pointer;
-  white-space: nowrap;
   min-width: 500px;
   color: var(--clr1);
+
 }
 
 .email-preview:hover {
@@ -18,16 +18,17 @@
 }
 
 .email-preview .subject {
-
   font-size: 1rem;
 }
 
 .email-preview .body {
   flex: 1;
+  white-space: nowrap;
   font-size: 1rem;
   font-weight: unset;
   color: var(--clr3);
   overflow: hidden;
+  width: 100px;
 }
 
 .email-preview .sent-at {

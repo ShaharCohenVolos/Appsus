@@ -5,6 +5,7 @@ export const emailService = {
   query,
   getById,
   changeReadStatus,
+  deleteEmail,
 }
 
 const KEY = 'emailDB'
@@ -51,6 +52,13 @@ function changeReadStatus(emailId, isRead) {
   const email = emails.find(email => email.id === emailId)
   email.isRead = isRead
   _saveToStorage(emails)
+}
+
+function deleteEmail(emailId) {
+  let emails = _loadFromStorage()
+  emails = emails.filter(email => email.id !== emailId)
+  _saveToStorage(emails)
+  return Promise.resolve()
 }
 
 function _makeEmail(subject, body, to, authorName, authorEmail, sentAt = Date.now()) {

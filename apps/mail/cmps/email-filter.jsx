@@ -9,7 +9,6 @@ export class EmailFilter extends React.Component {
     }
   }
 
-
   handleChange = ({ target }) => {
     this.setState(({ filter }) => ({
       filter: { ...filter, [target.name]: target.value }
@@ -18,12 +17,11 @@ export class EmailFilter extends React.Component {
 
   onFilter = (filter) => {
     eventBusService.emit('email-filter', filter)
-    console.log('emitting:', filter)
   }
 
   render() {
     return <section className="email-filter">
-      <input name="search" type="Search" placeholder="Search" onChange={this.handleChange} />
+      <input name="search" type="Search" placeholder="Search Email" onChange={this.handleChange} />
       <select name="option" onChange={this.handleChange}>
         <option value="all">All</option>
         <option value="unread">Unread</option>

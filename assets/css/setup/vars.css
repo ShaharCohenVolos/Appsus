@@ -1,5 +1,5 @@
 :root {
-  --bgclr: whitesmoke;
+  --bgclr: white;
   --fontclr: rgb(32, 32, 32);
 
   --clr1: rgb(32, 32, 32);
@@ -8,4 +8,5 @@
   --clr4: rgb(223, 223, 223);
 
   --brndclr: #d93025;
+  --brndclr2: #d9312544;
 }

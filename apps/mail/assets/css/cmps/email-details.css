@@ -15,7 +15,6 @@
 
 .email-details .delete-btn:hover {
   background-color: var(--clr2);
-
 }
 
 .email-details .delete-btn::before {
@@ -27,7 +26,6 @@
 .email-details .back-btn {
   background: none;
   border: none;
-  color: var(--clr3);
   border-radius: 50%;
   aspect-ratio: 1;
 }
@@ -36,10 +34,15 @@
   background-color: var(--clr2);
 }
 
-.email-details .back-btn::before {
+.email-details .back-btn a {
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--clr3);
+}
+
+.email-details .back-btn a::before {
   font-family: 'fa-solid';
   content: '\f177';
-  font-size: 20px;
 }
 
 .email-details header {
