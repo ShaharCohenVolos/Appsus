@@ -5,7 +5,7 @@
   cursor: pointer;
   min-width: 500px;
   color: var(--clr1);
-
+  white-space: nowrap;
 }
 
 .email-preview:hover {
@@ -23,16 +23,17 @@
 
 .email-preview .body {
   flex: 1;
-  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   font-size: 1rem;
   font-weight: unset;
   color: var(--clr3);
-  overflow: hidden;
   width: 100px;
 }
 
 .email-preview .sent-at {
-  padding-inline-start: .625em;
+  padding-inline-start: 1em;
+  font-size: .9em;
 }
 
 .email-preview .body::before {
