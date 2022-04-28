@@ -1,10 +1,12 @@
 /* Basics */
 @import './basics/base.css';
+@import './basics/layout.css';
 @import './setup/vars.css';
 @import './setup/fonts.css';
 
 /* Appsus */
 @import '../css/cmps/app-header.css';
+@import '../css/cmps/app-aside.css';
 
 /* Email App */
 @import '../../apps/mail/assets/css/pages/email-app.css';

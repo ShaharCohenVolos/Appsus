@@ -1,0 +1,7 @@
+.app-aside {
+  background-color: var(--bgclr);
+  width: 256px;
+  height: 100vh;
+  position: fixed;
+  top: 60px
+}

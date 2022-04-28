@@ -1,11 +1,11 @@
 import { emailUtilService } from '../services/email.util.service.js'
-const { Link } = ReactRouterDOM
+const { Link, withRouter } = ReactRouterDOM
 
-export function EmailPreview({ email }) {
+function _EmailPreview({ email, match }) {
 
   const readStatus = email.isRead ? 'read' : 'unread'
 
-  return <Link to={`/email/inbox/${email.id}`} style={{ textDecoration: 'none' }} >
+  return <Link to={`/email/${match.params.folder}/${email.id}`} style={{ textDecoration: 'none' }} >
     <article className={`email-preview ${readStatus}`} >
       <h1 className="author-name">{email.authorName}</h1>
       <h1 className="subject">{email.subject}</h1>
@@ -14,3 +14,5 @@ export function EmailPreview({ email }) {
     </ article>
   </ Link >
 }
+
+export const EmailPreview = withRouter(_EmailPreview)
