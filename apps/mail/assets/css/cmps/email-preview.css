@@ -1,11 +1,22 @@
 .email-preview {
   display: flex;
+  flex-direction: column;
   padding: .625em;
   border-block-end: var(--clr2) 1px solid;
   cursor: pointer;
   min-width: 500px;
   color: var(--clr1);
   white-space: nowrap;
+  gap: .625em;
+  max-width: 100%;
+  position: relative;
+}
+
+@media screen and (min-width:800px) {
+  .email-preview {
+    flex-direction: row;
+    position: static;
+  }
 }
 
 .email-preview:hover {
@@ -15,6 +26,7 @@
 .email-preview .author-name {
   min-width: 200px;
   font-size: 1rem;
+
 }
 
 .email-preview .subject {
@@ -28,16 +40,33 @@
   font-size: 1rem;
   font-weight: unset;
   color: var(--clr3);
-  width: 100px;
+  width: 400px;
+}
+
+@media screen and (min-width:800px) {
+  .email-preview .body {
+    width: 0;
+  }
 }
 
 .email-preview .sent-at {
-  padding-inline-start: 1em;
-  font-size: .9em;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
-.email-preview .body::before {
-  content: '\00A0 - ';
+@media screen and (min-width:800px) {
+  .email-preview .sent-at {
+    position: static;
+    padding-inline-start: 1em;
+    font-size: .9em;
+  }
+}
+
+@media screen and (min-width:800px) {
+  .email-preview .body::before {
+    content: '\00A0 - ';
+  }
 }
 
 .email-preview.unread {

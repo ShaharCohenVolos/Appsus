@@ -7,14 +7,17 @@ export class AppHeader extends React.Component {
 
   render() {
     return <header className="app-header">
-      <h1>Appsus</h1>
+      <h1 className="logo">Appsus</h1>
       <Route path="/email" component={EmailFilter} />
-      <nav>
-        <NavLink to="/" exact> Home </NavLink>
-        <NavLink to="/about"> About </NavLink>
-        <NavLink to="/email/inbox"> Email </NavLink>
-        <NavLink to="/keep"> Keep </NavLink>
-      </nav>
+
+      <div className="drop-down">
+        <nav className="drop-down-content">
+          <NavLink to="/" exact> Home </NavLink>
+          <NavLink to="/about"> About </NavLink>
+          <NavLink to="/email/inbox"> Email </NavLink>
+          <NavLink to="/keep"> Keep </NavLink>
+        </nav>
+      </div>
     </header>
   }
 }

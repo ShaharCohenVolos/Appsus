@@ -1,4 +1,11 @@
 .main-layout {
-  padding-inline-start: 256px;
-  padding-block-start: 110px;
+  padding: 0;
+  padding-block-start: 150px;
+}
+
+@media screen and (min-width:800px) {
+  .main-layout {
+    padding-inline-start: 256px;
+    padding-block-start: 110px;
+  }
 }

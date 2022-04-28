@@ -6,6 +6,10 @@ export class EmailCompose extends React.Component {
     email: null
   }
 
+  onComponentDidMount() {
+
+  }
+
   handleChange = ({ target }) => {
     this.setState(({ email }) => ({
       email: { ...email, [target.name]: target.value }
@@ -18,6 +22,7 @@ export class EmailCompose extends React.Component {
 
   onStopComposing = () => {
     this.setState({ email: null })
+
   }
 
   onSendMail = (ev) => {
@@ -32,17 +37,17 @@ export class EmailCompose extends React.Component {
 
     return <section className="email-compose">
       <button className="compose-btn" onClick={this.onStartComposing}><h1 className="plus"></h1><h1>Compose</h1></button>
-      {email && <form onSubmit={this.onSendMail}>
+      {email && <form onSubmit={this.onSendMail} >
         <header className="form-header">
           <h1>New Email</h1>
           <button className="close-btn" type="button" onClick={this.onStopComposing}></button>
         </header>
         <main className="form-body">
-          <input className="to" type="email" name="to" placeholder="Recipients" onChange={this.handleChange} />
+          <input className="to" type="email" name="to" placeholder="Recipients" onChange={this.handleChange} autoFocus={true} />
           <input className="subject" type="text" name="subject" placeholder="Subject" onChange={this.handleChange} />
           <textarea className="body" name="body" onChange={this.handleChange} />
         </main>
-        <button>Send</button>
+        <button className="send-btn">Send</button>
       </form>}
     </section>
   }

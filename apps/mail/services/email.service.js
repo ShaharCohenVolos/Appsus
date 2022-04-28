@@ -5,7 +5,9 @@ export const emailService = {
   query,
   getById,
   changeReadStatus,
+  addEmail,
   deleteEmail,
+  getUserName,
 }
 
 const KEY = 'emailDB'
@@ -24,6 +26,10 @@ function query(folder, filter) {
   if (filter) emails = _getFilteredEmails(emails, filter)
 
   return Promise.resolve(emails)
+}
+
+function getUserName() {
+  return loggedInUser.fullName
 }
 
 function _getEmailsFromFolder(emails, folder) {
@@ -72,6 +78,15 @@ function changeReadStatus(emailId, isRead) {
   const email = emails.find(email => email.id === emailId)
   email.isRead = isRead
   _saveToStorage(emails)
+}
+
+function addEmail({ subject, body, to }) {
+  let emails = _loadFromStorage()
+  const email = _makeEmail(subject, body, to, loggedInUser.fullName, loggedInUser.email)
+  email.isRead = true
+  emails = [email, ...emails]
+  _saveToStorage(emails)
+  return Promise.resolve()
 }
 
 function deleteEmail(emailId) {

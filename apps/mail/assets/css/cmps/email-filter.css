@@ -12,6 +12,7 @@
   border: 1px solid var(--clr2);
   border-inline-end: none;
   padding: .625em;
+  outline: none;
 }
 
 .email-filter select {
@@ -21,4 +22,5 @@
   border-bottom-left-radius: 0;
   padding: .625em;
   cursor: pointer;
+  outline: none;
 }

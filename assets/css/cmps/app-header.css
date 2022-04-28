@@ -1,5 +1,6 @@
 .app-header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px var(--clr2) solid;
@@ -7,6 +8,83 @@
   gap: .625em;
   background-color: var(--bgclr);
   width: 100%;
-  height: 60px;
   position: fixed;
+  z-index: 10;
+}
+
+@media screen and (min-width: 800px) {
+  .app-header {
+    flex-direction: row;
+  }
+}
+
+.app-header .filter {
+  order: 2;
+  width: 100%;
+
+}
+
+.app-header .filter input {
+  padding: .625em;
+}
+
+@media screen and (min-width: 800px) {
+  .app-header .filter {
+    order: 0;
+    width: 700px;
+  }
+}
+
+.app-header .drop-down {
+  position: relative;
+  font-size: 2em;
+  height: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+  cursor: pointer;
+}
+
+.app-header .drop-down::before {
+  font-family: 'fa-solid';
+  content: '\f141';
+}
+
+.app-header .drop-down-content {
+  display: none;
+  position: absolute;
+  transform: translateX(-100%);
+  left: 200%;
+  background-color: var(--bgclr);
+  box-shadow: 0 0 8px 0 var(--clr4);
+  height: 300px;
+  width: 300px;
+
+}
+
+@media screen and (min-width: 800px) {
+  .app-header .drop-down-content {
+    left: 100%;
+  }
+}
+
+
+.app-header .drop-down-content>* {
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--fontclr);
+  cursor: pointer;
+}
+
+.app-header .drop-down-content>*:hover {
+  background-color: var(--clr2);
+}
+
+.app-header .drop-down:hover .drop-down-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  align-items: center;
 }

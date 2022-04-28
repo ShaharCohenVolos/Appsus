@@ -14,13 +14,21 @@ export class EmailApp extends React.Component {
     folder: this.props.match.params.folder
   }
 
-  removeEvent
+  removeFilterEvent
+  removeComposeEvent
 
   componentDidMount() {
     this.loadEmails()
-    this.removeEvent = eventBusService.on('email-filter', (filter) => {
+
+    this.removeFilterEvent = eventBusService.on('email-filter', (filter) => {
       this.setState({ filter },
         this.loadEmails)
+
+    })
+
+    this.removeComposeEvent = eventBusService.on('send-email', (email) => {
+      emailService.addEmail(email)
+      this.loadEmails()
     })
   }
 
@@ -31,7 +39,8 @@ export class EmailApp extends React.Component {
   }
 
   componentWillUnmount() {
-    this.removeEvent()
+    this.removeFilterEvent()
+    this.removeComposeEvent()
   }
 
   loadEmails = () => {

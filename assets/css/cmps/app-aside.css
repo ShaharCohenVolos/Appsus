@@ -1,7 +1,14 @@
 .app-aside {
+  display: none;
   background-color: var(--bgclr);
   width: 256px;
   height: 100vh;
   position: fixed;
   top: 60px
+}
+
+@media screen and (min-width:800px) {
+  .app-aside {
+    display: initial;
+  }
 }

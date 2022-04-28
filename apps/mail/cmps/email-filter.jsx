@@ -20,7 +20,7 @@ export class EmailFilter extends React.Component {
   }
 
   render() {
-    return <section className="email-filter">
+    return <section className="filter email-filter">
       <input name="search" type="Search" placeholder="Search Email" onChange={this.handleChange} />
       <select name="option" onChange={this.handleChange}>
         <option value="all">All</option>
