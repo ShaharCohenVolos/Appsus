@@ -15,13 +15,15 @@ export class KeepDetails extends React.Component{
 
     loadKeep = () => {
         const {keepId} = this.props.match.params
+   
         keepService.getFromId(keepId).then(keep => this.setState({keep}))
     }
 
     render(){
         const {keep} =this.state
+        if(!keep) return <img src="../../../assets/img/loader.gif"/>
         return <section className="keep-detail">
-            <KeepDetailsPreview keep={keep}/>
+           <KeepDetailsPreview keep={keep}/>
         </section>
     }
 }
