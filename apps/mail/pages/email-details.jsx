@@ -25,7 +25,10 @@ export class EmailDetails extends React.Component {
       })
   }
 
-  onDeleteEmail = () => { }
+  onDeleteEmail = () => {
+    emailService.deleteEmail(this.props.match.params.emailId)
+      .then(() => this.props.history.push('/email'))
+  }
 
   render() {
     const { email } = this.state
@@ -35,7 +38,7 @@ export class EmailDetails extends React.Component {
 
     return <section className="email-details">
       <section className="btn-container">
-        <button className="back-btn" > <Link to="/email"></Link></button>
+        <button className="back-btn" > <Link to="/email/inbox"></Link></button>
         <button className="delete-btn" onClick={this.onDeleteEmail}></button>
       </section>
       <header>

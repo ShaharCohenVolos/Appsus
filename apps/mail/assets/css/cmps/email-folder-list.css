@@ -1,0 +1,63 @@
+.email-folder-list {
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  width: 256px;
+  gap: 2em;
+  padding: 1.625em;
+}
+
+.email-folder-list .compose-btn {
+  background: none;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: .3em;
+  padding-bottom: .3em;
+  border-radius: 6rem;
+  border: none;
+  align-self: start;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  box-shadow: 0 0 4px 0 var(--clr1);
+  transition: .2s;
+}
+
+.email-folder-list .compose-btn:hover {
+  box-shadow: 0 0 8px 0 var(--clr1);
+}
+
+
+.email-folder-list .compose-btn .plus::before {
+  font-size: 3em;
+  font-family: fa-bold;
+  color: var(--brndclr);
+  content: '\2b';
+}
+
+
+.email-folder-list .folder-nav {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 30%;
+  margin-left: -1.625em;
+
+}
+
+.email-folder-list .folder-nav>* {
+  text-decoration: none;
+  color: var(--fontclr);
+  padding: .625em;
+  border-top-right-radius: 6rem;
+  border-bottom-right-radius: 6rem;
+}
+
+.email-folder-list .folder-nav>*:hover {
+  background-color: var(--clr2);
+}
+
+.email-folder-list .folder-nav>*.active {
+  font-weight: bolder;
+  background-color: var(--brndclr2);
+  color: var(--brndclr);
+}
