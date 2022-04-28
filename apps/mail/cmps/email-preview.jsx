@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 
 export function EmailPreview({ email }) {
 
-  const className = email.isRead ? 'read' : 'not-read'
+  const className = email.isRead ? 'read' : 'unread'
 
   return <Link to={`/email/${email.id}`} style={{ textDecoration: 'none' }} >
     <article className={`email-preview ${className}`} >

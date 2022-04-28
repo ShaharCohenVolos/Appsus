@@ -1,9 +1,56 @@
+.btn-container {
+  display: flex;
+  padding: 1em;
+  border-block-end: 1px solid var(--clr2);
+  gap: 1em
+}
+
+.email-details .delete-btn {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  color: var(--clr3);
+  aspect-ratio: 1;
+}
+
+.email-details .delete-btn:hover {
+  background-color: var(--clr2);
+
+}
+
+.email-details .delete-btn::before {
+  font-family: 'fa-solid';
+  content: '\f1f8';
+  font-size: 20px;
+}
+
+.email-details .back-btn {
+  background: none;
+  border: none;
+  color: var(--clr3);
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.email-details .back-btn:hover {
+  background-color: var(--clr2);
+}
+
+.email-details .back-btn::before {
+  font-family: 'fa-solid';
+  content: '\f177';
+  font-size: 20px;
+}
+
 .email-details header {
-  /* background-color: lightgrey; */
   display: flex;
   justify-content: space-between;
-  padding: 4.5em;
+  padding-right: 4.5em;
+  padding-left: 4.5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
+
 
 .email-details header div {
   display: flex;
@@ -21,22 +68,6 @@
   font-size: .8rem;
   font-weight: unset;
   color: var(--clr3);
-}
-
-.email-details .delete-btn {
-  background: none;
-  border: none;
-  color: var(--clr3);
-}
-
-.email-details .delete-btn:hover {
-  color: var(--brndclr);
-}
-
-.email-details .delete-btn::before {
-  font-family: 'fa-solid';
-  content: '\f1f8';
-  font-size: 25px;
 }
 
 .email-details .subject {

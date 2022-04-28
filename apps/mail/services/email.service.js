@@ -13,11 +13,29 @@ const loggedInUser = {
   fullName: 'Mahatma Appsus'
 }
 
-function query() {
+function query(filter) {
   let emails = _loadFromStorage()
   if (!emails) {
     emails = _makeEmails()
     _saveToStorage(emails)
+  }
+  if (filter) {
+    const { search, option } = filter
+    if (search) {
+      emails = emails.filter(email => {
+        return email.subject.toLowerCase().includes(search.toLowerCase()) ||
+          email.authorName.toLowerCase().includes(search.toLowerCase())
+      })
+    }
+    if (option) {
+      switch (option) {
+        case 'read':
+          emails = emails.filter(email => email.isRead)
+          break
+        case 'unread':
+          emails = emails.filter(email => !email.isRead)
+      }
+    }
   }
   return Promise.resolve(emails)
 }

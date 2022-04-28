@@ -1,3 +1,5 @@
+import { eventBusService } from '../../../services/event-bus-service.js'
+
 export class EmailFilter extends React.Component {
 
   state = {
@@ -11,23 +13,21 @@ export class EmailFilter extends React.Component {
   handleChange = ({ target }) => {
     this.setState(({ filter }) => ({
       filter: { ...filter, [target.name]: target.value }
-    }))
-    // const urlSrcPrm = new URLSearchParams(this.state.filter)
-    // const searchStr = urlSrcPrm.toString()
-    // this.props.history.push(`/email?${searchStr}`)
+    }), () => this.onFilter(this.state.filter))
   }
 
-  // onFilter = (filter) => {
-  //   this.props.onSetFilter(filter)
-  // }
+  onFilter = (filter) => {
+    eventBusService.emit('email-filter', filter)
+    console.log('emitting:', filter)
+  }
 
   render() {
     return <section className="email-filter">
       <input name="search" type="Search" placeholder="Search" onChange={this.handleChange} />
       <select name="option" onChange={this.handleChange}>
         <option value="all">All</option>
-        <option value="read">Read</option>
         <option value="unread">Unread</option>
+        <option value="read">Read</option>
       </select>
     </section>
   }

@@ -38,6 +38,9 @@
   content: '\00A0 - ';
 }
 
+.email-preview.unread {
+  background-color: var(--bgclr);
+}
 
 .email-preview.read {
   background-color: var(--clr4);

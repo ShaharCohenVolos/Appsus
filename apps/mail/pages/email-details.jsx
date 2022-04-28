@@ -1,5 +1,7 @@
 import { emailService } from '../services/email.service.js'
 
+const { Link } = ReactRouterDOM
+
 export class EmailDetails extends React.Component {
 
   state = {
@@ -23,15 +25,19 @@ export class EmailDetails extends React.Component {
       })
   }
 
+  onDeleteEmail = () => { }
+
   render() {
     const { email } = this.state
     if (!email) return <h1>Loading...</h1>
 
     const date = new Date(email.sentAt).toDateString()
 
-
     return <section className="email-details">
-
+      <section className="btn-container">
+        <button className="back-btn" > <Link to="/email"></Link></button>
+        <button className="delete-btn" onClick={this.onDeleteEmail}></button>
+      </section>
       <header>
         <div>
           <h1 className="subject">{email.subject}</h1>
@@ -41,7 +47,6 @@ export class EmailDetails extends React.Component {
           </div>
           <h4 className="sent-at">{date}</h4>
         </div>
-        <button className="delete-btn"></button>
       </header>
       <p className="body">{email.body}</p>
     </section>
