@@ -7,6 +7,8 @@ import { AppKeep } from './apps/keep/pages/app-keep.jsx'
 import { KeepDetails } from './apps/keep/pages/keep-details.jsx'
 import { KeepEdit } from './apps/keep/cmps/keep-edit.jsx'
 import { AppAside } from './cmps/app-aside.jsx'
+import { BookApp } from './apps/book/pages/book-app.jsx'
+import { BookDetails } from './apps/book/pages/book-details.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -22,6 +24,8 @@ export function App() {
       {/* <Route path="/keep/:filter/:keepId" component={KeepDetails} /> */}
       <Route path="/keep/:filter" component={AppKeep} />
       <Route path="/keep" component={AppKeep} />
+      <Route path="/book/:bookId" component={BookDetails} />
+      <Route path="/book" component={BookApp} />
       <Route path="/about" component={About} />
       <Route path="/" component={Home} />
     </Switch>

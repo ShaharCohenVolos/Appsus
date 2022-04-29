@@ -1,6 +1,7 @@
 import { emailService } from '../services/email.service.js'
 import { eventBusService } from '../../../services/event-bus-service.js'
 
+import { EmailSort } from '../cmps/email-sort.jsx'
 import { EmailList } from '../cmps/email-list.jsx'
 
 const { Route, Switch } = ReactRouterDOM
@@ -10,14 +11,15 @@ export class EmailApp extends React.Component {
   state = {
     emails: null,
     filter: null,
-    folder: this.props.match.params.folder
+    folder: this.props.match.params.folder,
+    sortBy: { date: true }
   }
 
   removeFilterEvent
   removeComposeEvent
 
   componentDidMount() {
-    this.loadEmails()
+    this.loadEmails().then(() => eventBusService.emit('unread-count', emailService.getUnreadCount()))
     this.removeFilterEvent = eventBusService.on('email-filter', (filter) => {
       this.setState({ filter },
         this.loadEmails)
@@ -32,7 +34,7 @@ export class EmailApp extends React.Component {
 
   componentDidUpdate({ match }) {
     if (match.params.folder !== this.props.match.params.folder) {
-      this.setState({ folder: this.props.match.params.folder }, this.loadEmails)
+      this.setState({ folder: this.props.match.params.folder, sortBy: { date: true } }, this.loadEmails)
     }
   }
 
@@ -41,8 +43,12 @@ export class EmailApp extends React.Component {
     this.removeComposeEvent()
   }
 
+  onSetSort = (sortBy) => {
+    this.setState({ sortBy }, this.loadEmails)
+  }
+
   loadEmails = () => {
-    emailService.query(this.state.folder, this.state.filter)
+    return emailService.query(this.state.folder, this.state.filter, this.state.sortBy)
       .then(emails => this.setState({ emails }))
   }
 
@@ -51,6 +57,7 @@ export class EmailApp extends React.Component {
 
     if (!emails) return <h1>Loading...</h1>
     return <section className="email-app main-layout">
+      <EmailSort onSetSort={this.onSetSort} />
       <EmailList emails={emails} />
     </section>
 

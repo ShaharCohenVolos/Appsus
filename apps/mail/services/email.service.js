@@ -17,17 +17,22 @@ const loggedInUser = {
   fullName: 'Mahatma Appsus'
 }
 
-function query(folder, filter) {
+function query(folder, filter, sortBy) {
   let emails = _loadFromStorage()
+
   if (!emails) {
     emails = _makeEmails()
     _saveToStorage(emails)
   }
   emails = _getEmailsFromFolder(emails, folder)
+
   if (filter) emails = _getFilteredEmails(emails, filter)
+
+  emails = _sortEmails(emails, sortBy)
 
   return Promise.resolve(emails)
 }
+
 
 function getUserName() {
   return loggedInUser.fullName
@@ -104,6 +109,35 @@ function _makeEmails() {
     _makeEmail('Car Extended Warranty 3', 'We\'ve been trying to reach you concerning your vehicle\'s extended warranty...', loggedInUser.email, 'Warranty Master', 'warrantym@appsus.com', 1621146016652),
     _makeEmail('Hello World!', 'Hello World!', loggedInUser.email, 'John Smith', 'jsmith@gmail.com', 0),
   ]
+}
+
+function _sortEmails(emails, sortBy) {
+  let key
+  if (sortBy.date !== undefined) key = 'date'
+  else key = 'title'
+
+  switch (key) {
+    case 'date':
+      emails = _sortByDate(emails, sortBy[key])
+      break
+    case 'title':
+      emails = _sortByTitle(emails, sortBy[key])
+      break
+  }
+  return emails
+}
+
+function _sortByDate(emails, isAsc) {
+  return emails.sort((a, b) => { return isAsc ? b.sentAt - a.sentAt : a.sentAt - b.sentAt })
+}
+
+function _sortByTitle(emails, isAsc) {
+  return emails.sort((a, b) => {
+    return isAsc ?
+      (b.subject > a.subject) ? 1 : -1
+      :
+      (a.subject > b.subject) ? 1 : -1
+  })
 }
 
 function _getEmailsFromFolder(emails, folder) {

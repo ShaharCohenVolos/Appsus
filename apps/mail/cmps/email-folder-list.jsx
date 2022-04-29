@@ -12,7 +12,7 @@ export class EmailFolderList extends React.Component {
   removeUnreadEvent
 
   componentDidMount() {
-    emailService.getUnreadCount().then((unread) => this.setState({ unread }))
+    // emailService.getUnreadCount().then((unread) => this.setState({ unread }))
     this.removeUnreadEvent = eventBusService.on('unread-count', unread => {
       unread.then((unread) => this.setState({ unread }))
     })

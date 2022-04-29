@@ -6,6 +6,6 @@
 @media screen and (min-width:800px) {
   .main-layout {
     padding-inline-start: 256px;
-    padding-block-start: 110px;
+    padding-block-start: 60px;
   }
 }

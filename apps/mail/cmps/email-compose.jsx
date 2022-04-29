@@ -6,8 +6,10 @@ export class EmailCompose extends React.Component {
     email: null
   }
 
-  onComponentDidMount() {
-
+  componentDidMount() {
+    if (!this.props.location.search) return
+    const urlSrcPrm = new URLSearchParams(this.props.location.search)
+    this.setState({ email: { to: '', subject: urlSrcPrm.get('subject'), body: urlSrcPrm.get('body') } })
   }
 
   handleChange = ({ target }) => {
@@ -44,8 +46,8 @@ export class EmailCompose extends React.Component {
         </header>
         <main className="form-body">
           <input className="to" type="email" name="to" placeholder="Recipients" onChange={this.handleChange} autoFocus={true} />
-          <input className="subject" type="text" name="subject" placeholder="Subject" onChange={this.handleChange} />
-          <textarea className="body" name="body" onChange={this.handleChange} />
+          <input className="subject" type="text" name="subject" placeholder="Subject" onChange={this.handleChange} value={email.subject} />
+          <textarea className="body" name="body" onChange={this.handleChange} value={email.body} />
         </main>
         <button className="send-btn">Send</button>
       </form>}

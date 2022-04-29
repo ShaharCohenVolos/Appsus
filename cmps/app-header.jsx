@@ -13,6 +13,7 @@ export class AppHeader extends React.Component {
           <NavLink to="/about"> About </NavLink>
           <NavLink to="/email/inbox"> Email </NavLink>
           <NavLink to="/keep"> Keep </NavLink>
+          <NavLink to="/book"> Book </NavLink>
         </nav>
       </div>
     </header>
