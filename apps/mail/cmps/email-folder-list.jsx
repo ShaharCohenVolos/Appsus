@@ -1,5 +1,4 @@
 import { eventBusService } from '../../../services/event-bus-service.js'
-import { emailService } from '../services/email.service.jsx'
 
 const { NavLink } = ReactRouterDOM
 
@@ -12,7 +11,6 @@ export class EmailFolderList extends React.Component {
   removeUnreadEvent
 
   componentDidMount() {
-    // emailService.getUnreadCount().then((unread) => this.setState({ unread }))
     this.removeUnreadEvent = eventBusService.on('unread-count', unread => {
       unread.then((unread) => this.setState({ unread }))
     })

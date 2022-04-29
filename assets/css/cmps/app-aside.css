@@ -5,13 +5,14 @@
   z-index: 10;
   padding-top: 100px;
   width: 75%;
+
 }
 
 @media screen and (min-width:800px) {
   .app-aside {
     width: 256px;
     padding-top: 0;
-    top: 60px;
+    top: 70px;
     left: unset
   }
 }

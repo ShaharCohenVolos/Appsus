@@ -22,7 +22,8 @@
 }
 
 .email-details .btn-container>*:hover {
-  background-color: var(--clr2);
+  background-color: var(--clr4);
+  transition: .4s;
 }
 
 .email-details .delete-btn::before {

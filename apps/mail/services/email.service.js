@@ -25,10 +25,10 @@ function query(folder, filter, sortBy) {
     _saveToStorage(emails)
   }
   emails = _getEmailsFromFolder(emails, folder)
-
   if (filter) emails = _getFilteredEmails(emails, filter)
-
   emails = _sortEmails(emails, sortBy)
+
+
 
   return Promise.resolve(emails)
 }
@@ -55,13 +55,17 @@ function changeReadStatus(emailId, isRead) {
 
 function getUnreadCount() {
   const emails = _loadFromStorage()
-  const unreads = emails.filter(email => !email.isRead)
+  const unreads = emails.filter(email => {
+    return !email.isRead &&
+      !email.isDeleted &&
+      email.authorEmail !== loggedInUser.email
+  })
   return Promise.resolve(unreads.length)
 }
 
 function addEmail({ subject, body, to }) {
   let emails = _loadFromStorage()
-  const email = _makeEmail(subject, body, to, loggedInUser.fullName, loggedInUser.email)
+  const email = _makeEmail(subject, body, true, false, Date.now(), to, loggedInUser.fullName, loggedInUser.email)
   email.isRead = true
   emails = [email, ...emails]
   _saveToStorage(emails)
@@ -76,39 +80,18 @@ function deleteEmail(emailId) {
   return Promise.resolve()
 }
 
-function _makeEmail(subject, body, to, authorName, authorEmail, sentAt = Date.now()) {
+function _makeEmail(subject, body, isRead, isDeleted, sentAt, to, authorName, authorEmail) {
   return {
     id: utilService.makeId(),
     subject,
     body,
-    isRead: false,
-    isDeleted: false,
+    isRead,
+    isDeleted,
     sentAt,
     to,
     authorName,
     authorEmail,
   }
-}
-
-function _makeEmails() {
-  return [
-    _makeEmail('Miss you!', 'Would love to catch up sometimes', 'momo@momo.com', loggedInUser.fullName, loggedInUser.email),
-    _makeEmail('Miss you!', 'Would love to catch up sometimes', 'momo@momo.com', loggedInUser.fullName, loggedInUser.email),
-    _makeEmail('Miss you!', 'Would love to catch up sometimes', 'momo@momo.com', loggedInUser.fullName, loggedInUser.email),
-    _makeEmail('Miss you!', 'Would love to catch up sometimes', 'momo@momo.com', loggedInUser.fullName, loggedInUser.email),
-    _makeEmail('Miss you!', 'Would love to catch up sometimes', 'momo@momo.com', loggedInUser.fullName, loggedInUser.email),
-    _makeEmail('Miss you!', 'Would love to catch up sometimes', 'momo@momo.com', loggedInUser.fullName, loggedInUser.email),
-    _makeEmail('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', loggedInUser.email, 'Mr. Ipsum', 'lorem@ipsum.com'),
-    _makeEmail('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', loggedInUser.email, 'Mr. Ipsum', 'lorem@ipsum.com'),
-    _makeEmail('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', loggedInUser.email, 'Mr. Ipsum', 'lorem@ipsum.com'),
-    _makeEmail('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', loggedInUser.email, 'Mr. Ipsum', 'lorem@ipsum.com'),
-    _makeEmail('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', loggedInUser.email, 'Mr. Ipsum', 'lorem@ipsum.com'),
-    _makeEmail('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', loggedInUser.email, 'Mr. Ipsum', 'lorem@ipsum.com'),
-    _makeEmail('Car Extended Warranty 1', 'We\'ve been trying to reach you concerning your vehicle\'s extended warranty...', loggedInUser.email, 'Warranty Master', 'warrantym@appsus.com', 1641146016652),
-    _makeEmail('Car Extended Warranty 2', 'We\'ve been trying to reach you concerning your vehicle\'s extended warranty...', loggedInUser.email, 'Warranty Master', 'warrantym@appsus.com', 1631146016652),
-    _makeEmail('Car Extended Warranty 3', 'We\'ve been trying to reach you concerning your vehicle\'s extended warranty...', loggedInUser.email, 'Warranty Master', 'warrantym@appsus.com', 1621146016652),
-    _makeEmail('Hello World!', 'Hello World!', loggedInUser.email, 'John Smith', 'jsmith@gmail.com', 0),
-  ]
 }
 
 function _sortEmails(emails, sortBy) {
@@ -134,9 +117,8 @@ function _sortByDate(emails, isAsc) {
 function _sortByTitle(emails, isAsc) {
   return emails.sort((a, b) => {
     return isAsc ?
-      (b.subject > a.subject) ? 1 : -1
-      :
-      (a.subject > b.subject) ? 1 : -1
+      a.subject.localeCompare(b.subject) :
+      b.subject.localeCompare(a.subject)
   })
 }
 
@@ -182,4 +164,99 @@ function _saveToStorage(emails) {
 
 function _loadFromStorage() {
   return storageService.loadFromStorage(KEY)
+}
+
+function _makeEmails() {
+  return [
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      true,
+      false,
+      Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      true,
+      false,
+      1641146016652, 'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      false,
+      false,
+      1644346016652,
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      false,
+      false,
+      1611146016652,
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      false,
+      true,
+      1574346016652,
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      true,
+      true,
+      0,
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      true,
+      false,
+      1574346016652,
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      true,
+      false,
+      Date.now() - 100000,
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      true,
+      false,
+      0,
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+  ]
 }

@@ -24,7 +24,7 @@
 }
 
 .email-compose .compose-btn:hover {
-  box-shadow: 0 0 8px 0 var(--clr2);
+  box-shadow: 0 0 8px 0 var(--clr3);
 }
 
 .email-compose .compose-btn .plus::before {
