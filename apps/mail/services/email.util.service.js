@@ -1,11 +1,13 @@
+import { utilService } from '../../../services/util.service.js'
+
 export const emailUtilService = {
   getTimeToShow,
 }
 
 function getTimeToShow(timestamp) {
   const date = new Date(timestamp)
-  if (_isToday(date)) return `${date.getHours()}:${date.getMinutes()}`
-  if (_isThisYear(date)) return `${date.getDate()}/${date.getMonth() + 1}`
+  if (_isToday(date)) return `${utilService.padNum(date.getHours())}:${utilService.padNum(date.getMinutes())}`
+  if (_isThisYear(date)) return `${utilService.padNum(date.getDate())}/${utilService.padNum((date.getMonth() + 1))}`
   return date.toDateString()
 }
 

@@ -19,7 +19,7 @@ export class EmailApp extends React.Component {
   removeComposeEvent
 
   componentDidMount() {
-    this.loadEmails()
+    this.loadEmails().then(() => eventBusService.emit('unread-count', emailService.getUnreadCount()))
     this.removeFilterEvent = eventBusService.on('email-filter', (filter) => {
       this.setState({ filter },
         this.loadEmails)
@@ -48,7 +48,7 @@ export class EmailApp extends React.Component {
   }
 
   loadEmails = () => {
-    emailService.query(this.state.folder, this.state.filter, this.state.sortBy)
+    return emailService.query(this.state.folder, this.state.filter, this.state.sortBy)
       .then(emails => this.setState({ emails }))
   }
 

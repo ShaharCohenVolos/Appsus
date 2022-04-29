@@ -24,7 +24,6 @@ function query(folder, filter, sortBy) {
     emails = _makeEmails()
     _saveToStorage(emails)
   }
-
   emails = _getEmailsFromFolder(emails, folder)
 
   if (filter) emails = _getFilteredEmails(emails, filter)
