@@ -1,58 +1,111 @@
-import {keepService} from '../services/note.service.js'
-import {utilService} from '../../../services/util.service.js'
-import {KeepAddBar} from './keep-add-bar.jsx'
-
 export class KeepAdd extends React.Component {
   state = {
     keep: {
-      id: utilService.makeId(),
-      subject: '',
       type: "note-txt",
-      isPinned: true,
-      info: {
-      txt: "Fullstack Me Baby!"
-      },
-      style: {
-        bgc: utilService.generateRandomColor()
-      }
-     },
-     isFocused: false,
-  }
-    
-  handleChange = ({target}) => {
-    const field = target.name
-    const value = target.value
-    this.setState((prevState) => ({keep: {...prevState.keep, [field]: value}}))
-  }
+      title: "",
+      content: "",
+    },
+    isExpended: false,
+  };
 
-  onAdd = (ev) =>{
-    ev.preventDefault()
-    keepService.saveKeep(this.state.keep)
+  handleChange = ({ target }) => {
+    const { name, value } = target;
 
-  }
+    this.setState((prevState) => ({
+      keep: { ...prevState.keep, [name]: value },
+    }));
+  };
 
-  onCreate = (val) => {
-    this.setState({isFocused: val})
-  }
-  
-  
+  handleExpended = () => {
+    this.setState({ isExpended: true });
+  };
+
+  onSubmit = (ev) => {
+    ev.preventDefault();
+    const { type, title, content } = this.state.keep;
+    if(!title) {
+      alert('enter title')
+      return;
+    }
+    const keep = {
+      type,
+      title,
+      content,
+    };
+
+    this.props
+      .onAdd(keep)
+      .then(() => {
+        this.setState({
+          keep: {
+            type: "keep-txt",
+            title: "",
+            content: "",
+          },
+
+          isExpended: false,
+        });
+      })
+  };
+
   render() {
-    const {keep, isFocused} = this.state
-      return <section className="keep-add">
-        <form onSubmit={this.onAdd}>
-          <div>
+    const { isExpended } = this.state;
+    const { title, content, type } = this.state.keep;
+    return (
+      <section className="keep-add">
+        <form onSubmit={this.onSubmit} id="add-form">
+          {isExpended && (
+            <input
+              value={title}
+              type="text"
+              placeholder="Title..."
+              name="title"
+              onChange={this.handleChange}
+            />
+          )}
 
-          <input type="text" name="subject" 
-          value={keep.subject} placeholder="Title" 
-          onChange={this.handleChange} 
-          onFocus={() => this.onCreate(true)}
-          />
-
-          {isFocused && <KeepAddBar handleChange={this.handleChange}/>}
+          <div className="btn-cont on-add">
+            <p>
+              <textarea
+                value={content}
+                onClick={this.handleExpended}
+                name="content"
+                placeholder={
+                  (type === 'note-img') ? "Enter URL..." : 
+                  (type === 'note-todos') ? "Enter tasks seperated by commas" :
+                  "Make a keep..."
+                }
+                onChange={this.handleChange}
+                rows={isExpended ? 3 : 1}
+              ></textarea>
+            </p>
+            <button
+              name="type"
+              value="note-img"
+              onClick={this.handleChange}
+              type="button"
+              className="add-pic"
+              title="add pic"
+            >
+            </button>
+            <button 
+            name="type"
+            value="note-todos"
+            onClick={this.handleChange}
+            type="button"
+            className="add-list"
+            title="add-list">
+            </button>
           </div>
 
-          <button>Add</button>
+          <button className="submit" 
+          type="submit" 
+          form="add-form"
+          title="Submit">
+            Submit
+          </button>
         </form>
       </section>
-    }
+    );
   }
+}

@@ -1,51 +1,61 @@
-import { KeepList } from "../cmps/note-list.jsx";
 import { keepService } from "../services/note.service.js";
-import { KeepNavList } from "../cmps/keep-nav.jsx";
 import { KeepAdd } from "../cmps/keep-add.jsx";
+import { KeepPreview } from "../cmps/keep-preview.jsx";
 import { eventBusService } from "../../../services/event-bus-service.js";
-
-const { NavLink, Route } = ReactRouterDOM;
 
 export class AppKeep extends React.Component {
   state = {
     keeps: [],
-    filterBy: null,
   };
 
   componentDidMount() {
-    this.getFilterFromParams().then(() => {
-      this.loadKeeps();
-    })
-    eventBusService.on('filter-chng', (filterBy) => {
-      this.loadKeeps(filterBy)
-    })
+    this.loadKeeps();
+    eventBusService.on("filter-chng", (filterBy) => {
+      this.loadKeeps(filterBy);
+    });
   }
 
-  getFilterFromParams = () => {
+  onSetFilterBy = () => {
     const filterBy = this.props.match.params.filter;
-    this.setState({ filterBy });
-    return Promise.resolve()
+
+    return Promise.resolve(filterBy);
   };
 
-  loadKeeps = (filterBy = this.state.filterBy) => {
+  loadKeeps = (filterBy = null) => {
     keepService.query(filterBy).then((keeps) => {
       this.setState({ keeps });
     });
   };
 
+  onAddKeep = (newKeep) => {
+    keepService.saveKeep(newKeep).then(() => this.loadKeeps());
+    return Promise.resolve();
+  };
 
+  onDeleteKeeps = (id) => {
+    console.log(id);
+    console.log(this.state.keeps);
+    keepService.remove(id).then(() => this.loadKeeps());
+  };
 
   render() {
     const { keeps } = this.state;
+    if (!keeps) return <img src="../../../assets/img/loader.gif" />;
     return (
       <section className="keep-app main-layout">
-
-        <KeepAdd />
-        <KeepList
-          filter={this.state.filterBy}
-          keeps={keeps}
-          loadKeeps={this.loadKeeps}
-        />
+        <KeepAdd onAdd={this.onAddKeep} />
+        <section className="keep-container">
+          {keeps.map((keep, idx) => (
+            <KeepPreview
+              key={idx}
+              id={keep.id}
+              title={keep.title}
+              content={keep.content}
+              type={keep.type}
+              onDelete={this.onDeleteKeeps}
+            />
+          ))}
+        </section>
       </section>
     );
   }

@@ -1,38 +1,42 @@
-.keep-preview {
-  text-align: center;
-  padding: 2px;
-  border-radius: 5px;
-  margin: 5px;
-  display: flex;
+.keep {
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgb(175, 175, 175);
+  padding: 10px;
+  margin: 16px;
+
+  display:flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
-
-
-.keep-preview .keep-body{
-    flex-grow: 1;
-    color: var(--fontclr);
-    text-decoration: none;
-    display: grid;
-    place-content: center;
+.keep h1 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  text-align: center;
+  text-decoration: underline;
 }
 
-.keep-preview .delete-btn::before{
-    font-family: 'fa-solid';
-    content: '\f1f8'
+.keep p {
+  font-size: 1rem;
+  color: #6f212b;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  flex-grow:1;
 }
 
-
-
-.keep-preview .btns button {
+.keep .del-keep {
+  position: relative;
+  align-self: flex-end;  
   border: none;
-  background-color: inherit;
+  background: none;
+  cursor: pointer;
+  outline: none;
 }
 
-.keep-preview ul {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  list-style-position: inside;
+.keep .del-keep::before {
+  font-family: "fa-solid";
+  content: "\f1f8";
+  font-size: 20px;
 }

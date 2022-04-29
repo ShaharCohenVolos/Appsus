@@ -1,4 +1,5 @@
 import { storageService } from "../../../services/storage.service.js"
+import {utilService} from "../../../services/util.service.js"
 
 export const keepService = {
     query,
@@ -49,14 +50,16 @@ const gKeeps = [
 ]
 
 function query(filterBy){
-
+    
     let keeps = _loadFromStorage()
+    
     if(!keeps) {
         keeps = gKeeps
         _saveToStorage(keeps)
     }
+ 
     
-    if(filterBy !== 'all') {
+    if(filterBy !== 'all' && filterBy) {
 
         let type = filterBy
         keeps = keeps.filter(keep => {
@@ -82,6 +85,7 @@ function remove(id) {
 }
 
 function saveKeep(keep){
+    keep.id = utilService.makeId()
     return _add(keep)
 }
 
