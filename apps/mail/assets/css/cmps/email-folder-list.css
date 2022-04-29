@@ -5,7 +5,15 @@
   flex-direction: column;
   flex-basis: 30%;
   margin-left: -1.625em;
+}
 
+.email-folder-list .unread-count {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  right: 5%;
+  top: 50%;
+  font-size: .8em;
+  color: var(--brndclr);
 }
 
 .email-folder-list>* {
@@ -14,6 +22,7 @@
   padding: .625em;
   border-top-right-radius: 6rem;
   border-bottom-right-radius: 6rem;
+  position: relative;
 }
 
 .email-folder-list>*:hover {
@@ -24,4 +33,24 @@
   font-weight: bolder;
   background-color: var(--brndclr2);
   color: var(--brndclr);
+}
+
+.email-folder-list .inbox::before {
+  font-family: 'fa-solid';
+  content: '\f01c\00A0\00A0';
+}
+
+.email-folder-list .sent::before {
+  font-family: 'fa-solid';
+  content: '\f064\00A0\00A0';
+}
+
+.email-folder-list .trash::before {
+  font-family: 'fa-solid';
+  content: '\f1f8\00A0\00A0';
+}
+
+.email-folder-list .all-mail::before {
+  font-family: 'fa-solid';
+  content: '\f0e0\00A0\00A0';
 }

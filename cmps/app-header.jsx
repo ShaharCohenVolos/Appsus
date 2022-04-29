@@ -3,8 +3,6 @@ import { EmailFilter } from '../apps/mail/cmps/email-filter.jsx'
 const { NavLink, Route } = ReactRouterDOM
 
 export class AppHeader extends React.Component {
-
-
   render() {
     return <header className="app-header">
       <h1 className="logo">Appsus</h1>

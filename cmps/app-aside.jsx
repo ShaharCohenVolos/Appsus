@@ -4,11 +4,26 @@ import { KeepNavList } from '../apps/keep/cmps/keep-nav.jsx'
 
 const { Route } = ReactRouterDOM
 
-export function AppAside() {
-  return <aside className="app-aside">
-    <Route path="/email" component={EmailCompose} />
-    <Route path="/keep" component={KeepNavList}/>
-    <Route path="/email" component={EmailFolderList} />
-  </aside>
+export class AppAside extends React.Component {
+
+  state = {
+    isHidden: true
+  }
+
+  toggleAside = () => {
+    this.setState(({ isHidden }) => ({ isHidden: !isHidden }))
+  }
+
+  render() {
+    const status = this.state.isHidden ? 'hidden' : 'visible'
+
+    return <aside className={`app-aside ${status}`}>
+      <div className="page-cover" onClick={this.toggleAside}></div>
+      <button className="menu-btn" onClick={this.toggleAside}></button>
+      <Route path="/email" component={EmailCompose} />
+      <Route path="/keep" component={KeepNavList} />
+      <Route path="/email" component={EmailFolderList} />
+    </aside>
+  }
 }
 

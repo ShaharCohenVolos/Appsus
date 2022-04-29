@@ -8,6 +8,7 @@ export const emailService = {
   addEmail,
   deleteEmail,
   getUserName,
+  getUnreadCount,
 }
 
 const KEY = 'emailDB'
@@ -32,40 +33,6 @@ function getUserName() {
   return loggedInUser.fullName
 }
 
-function _getEmailsFromFolder(emails, folder) {
-  switch (folder) {
-    case 'inbox':
-      emails = emails.filter(email => email.to === loggedInUser.email && !email.isDeleted)
-      break
-    case 'sent':
-      emails = emails.filter(email => email.authorEmail === loggedInUser.email && !email.isDeleted)
-      break
-    case 'trash':
-      emails = emails.filter(email => email.isDeleted)
-      break
-  }
-  return emails
-}
-
-function _getFilteredEmails(emails, filter) {
-  const { search, option } = filter
-  if (search) {
-    emails = emails.filter(email => {
-      return email.subject.toLowerCase().includes(search.toLowerCase()) ||
-        email.authorName.toLowerCase().includes(search.toLowerCase())
-    })
-  }
-  if (option) {
-    switch (option) {
-      case 'read':
-        emails = emails.filter(email => email.isRead)
-        break
-      case 'unread':
-        emails = emails.filter(email => !email.isRead)
-    }
-  }
-  return emails
-}
 
 function getById(emailId) {
   const emails = _loadFromStorage()
@@ -78,6 +45,13 @@ function changeReadStatus(emailId, isRead) {
   const email = emails.find(email => email.id === emailId)
   email.isRead = isRead
   _saveToStorage(emails)
+  return Promise.resolve()
+}
+
+function getUnreadCount() {
+  const emails = _loadFromStorage()
+  const unreads = emails.filter(email => !email.isRead)
+  return Promise.resolve(unreads.length)
 }
 
 function addEmail({ subject, body, to }) {
@@ -131,6 +105,42 @@ function _makeEmails() {
     _makeEmail('Hello World!', 'Hello World!', loggedInUser.email, 'John Smith', 'jsmith@gmail.com', 0),
   ]
 }
+
+function _getEmailsFromFolder(emails, folder) {
+  switch (folder) {
+    case 'inbox':
+      emails = emails.filter(email => email.to === loggedInUser.email && !email.isDeleted)
+      break
+    case 'sent':
+      emails = emails.filter(email => email.authorEmail === loggedInUser.email && !email.isDeleted)
+      break
+    case 'trash':
+      emails = emails.filter(email => email.isDeleted)
+      break
+  }
+  return emails
+}
+
+function _getFilteredEmails(emails, filter) {
+  const { search, option } = filter
+  if (search) {
+    emails = emails.filter(email => {
+      return email.subject.toLowerCase().includes(search.toLowerCase()) ||
+        email.authorName.toLowerCase().includes(search.toLowerCase())
+    })
+  }
+  if (option) {
+    switch (option) {
+      case 'read':
+        emails = emails.filter(email => email.isRead)
+        break
+      case 'unread':
+        emails = emails.filter(email => !email.isRead)
+    }
+  }
+  return emails
+}
+
 
 function _saveToStorage(emails) {
   storageService.saveToStorage(KEY, emails)

@@ -1,4 +1,4 @@
-.btn-container {
+.email-details .btn-container {
   display: flex;
   padding: 1em;
   border-block-end: 1px solid var(--clr2);
@@ -48,10 +48,17 @@
 .email-details header {
   display: flex;
   justify-content: space-between;
-  padding-right: 4.5em;
-  padding-left: 4.5em;
+  padding-right: 1em;
+  padding-left: 1em;
   padding-top: 2em;
   padding-bottom: 2em;
+}
+
+@media screen and (min-width: 800px) {
+  .email-details header {
+    padding-left: 4.5em;
+    padding-right: 4.5em;
+  }
 }
 
 
@@ -96,6 +103,13 @@
 }
 
 .email-details .body {
-  padding-left: 9.75em;
-  padding-right: 9.75em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+@media screen and (min-width: 800px) {
+  .email-details .body {
+    padding-left: 9.75em;
+    padding-right: 9.75em;
+  }
 }

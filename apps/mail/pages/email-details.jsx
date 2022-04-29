@@ -1,4 +1,5 @@
 import { emailService } from '../services/email.service.js'
+import { eventBusService } from '../../../services/event-bus-service.js'
 
 const { Link } = ReactRouterDOM
 
@@ -13,6 +14,9 @@ export class EmailDetails extends React.Component {
       .then(() => {
         const { email } = this.state
         emailService.changeReadStatus(email.id, true)
+          .then(() => {
+            eventBusService.emit('unread-count', emailService.getUnreadCount())
+          })
       })
   }
 

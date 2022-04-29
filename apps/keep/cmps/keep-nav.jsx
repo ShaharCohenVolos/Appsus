@@ -1,6 +1,6 @@
-import { eventBusService } from "../../../services/event-bus-service";
+import { eventBusService } from "../../../services/event-bus-service.js"
 
-const { NavLink } = ReactRouterDOM;
+const { NavLink } = ReactRouterDOM
 
 export class KeepNavList extends React.Component {
   state = {
@@ -15,7 +15,7 @@ export class KeepNavList extends React.Component {
   };
 
   render() {
-    const { activeBtn } = this.state;
+    const { activeBtn } = this.state
     return (
       <aside className="keep-nav">
         <div className="space-container"></div>
@@ -42,6 +42,6 @@ export class KeepNavList extends React.Component {
             Todo-Lists</NavLink>
         </nav>
       </aside>
-    );
+    )
   }
 }
