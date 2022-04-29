@@ -25,3 +25,15 @@
 @import '../../apps/keep/assets/css/cmps/keep-sidebar.css';
 @import '../../apps/keep/assets/css/cmps/keep-details.css';
 @import '../../apps/keep/assets/css/cmps/keep-add.css';
+
+/* Book App */
+@import '../../apps/book/assets/css/cmps/book-list.css';
+@import '../../apps/book/assets/css/cmps/book-preview.css';
+@import '../../apps/book/assets/css/pages/book-details.css';
+@import '../../apps/book/assets/css/cmps/filter-by.css';
+/* @import '../../apps/book/assets/css/cmps/app-header.css'; */
+@import '../../apps/book/assets/css/cmps/review-add.css';
+@import '../../apps/book/assets/css/cmps/book-reviews.css';
+@import '../../apps/book/assets/css/cmps/book-add.css';
+@import '../../apps/book/assets/css/cmps/user-msg.css';
+@import '../../apps/book/assets/css/cmps/about.css';

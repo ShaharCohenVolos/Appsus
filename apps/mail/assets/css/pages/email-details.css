@@ -1,47 +1,41 @@
 .email-details .btn-container {
   display: flex;
+  align-items: center;
   padding: 1em;
   border-block-end: 1px solid var(--clr2);
-  gap: 1em
 }
 
-.email-details .delete-btn {
+.email-details .btn-container>* {
   background: none;
   border: none;
   border-radius: 50%;
   color: var(--clr3);
-  aspect-ratio: 1;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--clr3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
 }
 
-.email-details .delete-btn:hover {
+.email-details .btn-container>*:hover {
   background-color: var(--clr2);
 }
 
 .email-details .delete-btn::before {
   font-family: 'fa-solid';
   content: '\f1f8';
-  font-size: 20px;
 }
 
-.email-details .back-btn {
-  background: none;
-  border: none;
-  border-radius: 50%;
-  aspect-ratio: 1;
+.email-details .save-btn::before {
+  font-family: 'fa-solid';
+  content: '\f1d8'
 }
 
-.email-details .back-btn:hover {
-  background-color: var(--clr2);
-}
-
-.email-details .back-btn a {
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 20px;
-  color: var(--clr3);
-}
-
-.email-details .back-btn a::before {
+.email-details .back-btn::before {
   font-family: 'fa-solid';
   content: '\f177';
 }
