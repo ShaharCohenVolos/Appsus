@@ -31,10 +31,10 @@ export class EmailDetails extends React.Component {
   }
 
   onDeleteEmail = () => {
+
     emailService.deleteEmail(this.props.match.params.emailId)
       .then(() => {
         this.props.history.push(`/email/${this.props.match.params.folder}`)
-        eventBusService.emit('user-msg', { txt: 'Email Deleted', type: 'success' })
       })
   }
 

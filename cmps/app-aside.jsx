@@ -3,9 +3,9 @@ import { EmailFolderList } from '../apps/mail/cmps/email-folder-list.jsx'
 import { KeepNavList } from '../apps/keep/cmps/keep-nav.jsx'
 import { AppFooter } from './app-footer.jsx'
 
-const { Route } = ReactRouterDOM
+const { Route, withRouter } = ReactRouterDOM
 
-export class AppAside extends React.Component {
+class _AppAside extends React.Component {
 
   state = {
     isHidden: true
@@ -17,7 +17,7 @@ export class AppAside extends React.Component {
 
   render() {
     const status = this.state.isHidden ? 'hidden' : 'visible'
-
+    if (this.props.location.pathname === '/') return <React.Fragment />
     return <aside className={`app-aside ${status}`}>
       <div className="page-cover" onClick={this.toggleAside}></div>
       <button className="menu-btn" onClick={this.toggleAside}></button>
@@ -28,4 +28,6 @@ export class AppAside extends React.Component {
     </aside>
   }
 }
+
+export const AppAside = withRouter(_AppAside)
 

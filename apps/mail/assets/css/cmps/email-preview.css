@@ -9,12 +9,14 @@
   gap: .625em;
   width: 100%;
   position: relative;
+  height: unset;
 }
 
 @media screen and (min-width:800px) {
   .email-preview {
     flex-direction: row;
     position: static;
+    height: 40px;
   }
 }
 
@@ -24,6 +26,52 @@
 
 .email-preview:hover .email-star {
   color: var(--clr3);
+}
+
+.email-preview .btn-container {
+  display: none;
+}
+
+@media screen and (min-width:800px) {
+  .email-preview:hover .btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .625em;
+  }
+
+  .email-preview:hover .sent-at {
+    display: none;
+  }
+
+}
+
+.email-preview .btn-container>* {
+  background: none;
+  border: none;
+  color: var(--clr1);
+  font-size: 1em;
+  padding: 8px;
+}
+
+.email-preview .btn-container>*:hover {
+  background-color: var(--clr2);
+  border-radius: 50%;
+}
+
+.email-preview .delete-btn::before {
+  font-family: 'fa-solid';
+  content: '\f1f8';
+}
+
+.email-preview .read-btn::before {
+  font-family: 'fa-solid';
+  content: '\f0e0';
+}
+
+.email-preview.read .read-btn::before {
+  font-family: 'fa-solid';
+  content: '\f2b6';
 }
 
 .email-preview .author-name {

@@ -3,9 +3,17 @@
   padding-block-start: 170px;
 }
 
+.no-aside-layout {
+  padding-block-start: 170px;
+}
+
 @media screen and (min-width:800px) {
   .main-layout {
     padding-inline-start: 256px;
+    padding-block-start: 70px;
+  }
+
+  .no-aside-layout {
     padding-block-start: 70px;
   }
 }

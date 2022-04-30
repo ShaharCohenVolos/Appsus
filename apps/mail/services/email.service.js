@@ -1,5 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
+import { eventBusService } from '../../../services/event-bus-service.js'
 
 export const emailService = {
   query,
@@ -45,6 +46,7 @@ function getById(emailId) {
 function changeReadStatus(emailId, isRead) {
   const emails = _loadFromStorage()
   const email = emails.find(email => email.id === emailId)
+  if (!isRead) isRead = !email.isRead
   email.isRead = isRead
   _saveToStorage(emails)
   return Promise.resolve()
@@ -72,10 +74,16 @@ function addEmail({ subject, body, to }) {
 function deleteEmail(emailId) {
   let emails = _loadFromStorage()
   const email = emails.find(email => email.id === emailId)
-  if (email.removedAt) emails = emails.filter(email => email.id !== emailId)
-  else email.removedAt = Date.now()
+  if (email.removedAt) {
+    emails = emails.filter(email => email.id !== emailId)
+    eventBusService.emit('user-msg', { txt: 'Email deleted', type: 'success' })
+  }
+  else {
+    email.removedAt = Date.now()
+    eventBusService.emit('user-msg', { txt: 'Email sent to trash', type: 'success' })
+  }
   _saveToStorage(emails)
-  return Promise.resolve()
+  return Promise.resolve(email)
 }
 
 function toggleStar(emailId) {

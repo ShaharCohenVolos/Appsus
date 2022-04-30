@@ -1,5 +1,5 @@
-import { KeepEditBgc } from "./edit-keep-bgc.jsx";
-import { KeepToMail} from "./keep-to-mail.jsx"
+import { KeepEditBgc } from "./edit-keep-bgc.jsx"
+import { KeepToMail } from "./keep-to-mail.jsx"
 
 export class KeepPreview extends React.Component {
   state = {
@@ -7,24 +7,24 @@ export class KeepPreview extends React.Component {
   };
 
   componentDidMount() {
-    this.loadKeep();
+    this.loadKeep()
   }
 
-  
+
 
   loadKeep = () => {
-    const { keep } = this.props;
-    this.setState({ keep });
+    const { keep } = this.props
+    this.setState({ keep })
   };
 
   onColorChange = ({ target }) => {
-    const { value, name } = target;
-    const {id} = this.state.keep
+    const { value, name } = target
+    const { id } = this.state.keep
     this.props.onColor(value, id)
   };
 
   render() {
-    const { keep} = this.props;
+    const { keep } = this.props
 
     return (
       <article className="keep" style={keep.style}>
@@ -39,7 +39,7 @@ export class KeepPreview extends React.Component {
                   <li key={idx}>
                     {todo.charAt(0) === " " ? todo.substring(1) : todo}
                   </li>
-                );
+                )
               })}
             </ul>
           ) : (
@@ -52,12 +52,12 @@ export class KeepPreview extends React.Component {
             className="del-keep"
             title="Delete Keep"
           ></button>
-          <KeepToMail keep={keep}/>
-          <KeepEditBgc keep={keep} 
-          onColor={this.onColorChange} 
+          <KeepToMail keep={keep} />
+          <KeepEditBgc keep={keep}
+            onColor={this.onColorChange}
           />
         </div>
       </article>
-    );
+    )
   }
 }
