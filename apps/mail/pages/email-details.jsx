@@ -64,7 +64,7 @@ export class EmailDetails extends React.Component {
       </header>
       <div className="main-container">
         <div className="img-container">
-          <img className="img-holder" src="./../assets/img/profile.svg" alt="profile" />
+          <img className="img-holder" src="./assets/img/profile.svg" alt="profile" />
         </div>
         <main className="main-content">
           <div className="author-info">
