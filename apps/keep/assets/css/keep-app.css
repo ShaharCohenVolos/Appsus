@@ -6,6 +6,6 @@
 
 .keep-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10%, 40%));
-    place-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    /* place-content: center; */
 }

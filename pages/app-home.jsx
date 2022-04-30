@@ -1,3 +1,5 @@
+
+
 const { Link } = ReactRouterDOM
 
 export function Home() {
@@ -29,7 +31,11 @@ export function Home() {
         <div className="img-container"><img src="./../assets/img/shahar.jpg" alt="uri" /></div>
         <h1>Shahar Cohen</h1>
         <h2>Lead Keep Designer</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa mollitia fugit, animi ex tempora commodi quo natus dolore tempore, accusamus repellendus optio distinctio magnam qui? Excepturi nihil ut facilis pariatur?
+        <p>Shahar Cohen Volos, age 29, from Haifa. I am merried +2 dogs. Before coming to Coding Academy
+          I used to work for HP Computers.
+          <br/> 
+          <br/> 
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa mollitia fugit, animi ex tempora commodi quo natus dolore tempore, accusamus repellendus optio distinctio magnam qui? Excepturi nihil ut facilis pariatur?
           Vero minus voluptatem velit facilis id nihil. Consequatur eos sit quidem id maxime. Ea, quisquam ut molestias enim quos dignissimos! Accusantium molestias saepe minima qui, quibusdam possimus eaque ratione eos.
           Maiores quia porro, dignissimos eligendi quam iusto eaque tempora consectetur reiciendis illum aut blanditiis consequuntur nemo quo inventore id doloremque natus recusandae laboriosam dolore. Non nihil ipsam eligendi nulla consequatur?</p>
       </div>

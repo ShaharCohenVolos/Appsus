@@ -27,7 +27,7 @@ const gKeeps = [
         id: "n102",
         type: "note-img",
         title: "Bobby and I",
-        content: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
+        content: "https://wallpaperaccess.com/full/1331386.jpg",
         style: {
             backgroundColor: "#B0E0E6",
         }
@@ -44,10 +44,47 @@ const gKeeps = [
        {
         id: "n104",
         type: "note-vid",
+        title: "Funnies",
+        content: "https://www.youtube.com/embed/4_ozS7X0zyw",
+        style: {
+        backgroundColor: "teal",
+        }
+    },
+    {
+        id: "n101",
+        type: "note-txt",
+        isPinned: true,
+        title: "Hello",
+        content: "Welcome to React",
+        style: {
+        backgroundColor: "#B22222",
+        }
+    },
+    {
+        id: "n102",
+        type: "note-img",
+        title: "From that time...",
+        content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wd-TtnQms_MhwwwzlSKXIF-M28qp7ZblXg&usqp=CAU",
+        style: {
+            backgroundColor: "#ffffff",
+        }
+    },
+    {
+        id: "n103",
+        type: "note-todos",
+        title: "todos",
+        content: "Hello, To, React, From, JS",
+        style: {
+        backgroundColor: "#ffffff",
+        }
+    }, 
+       {
+        id: "n104",
+        type: "note-vid",
         title: "Witcher Logic",
         content: "https://www.youtube.com/embed/ldtZMgyPXmc",
         style: {
-        backgroundColor: "teal",
+        backgroundColor: "#ffffff",
         }
     },
 ]
