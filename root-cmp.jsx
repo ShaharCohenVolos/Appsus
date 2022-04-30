@@ -23,10 +23,7 @@ export function App() {
     <Switch >
       <Route path="/email/:folder/:emailId" component={EmailDetails} />
       <Route path="/email/:folder/" component={EmailApp} />
-      {/* <Route path="/keep/edit/:keepId" component={KeepEdit} /> */}
-      {/* <Route path="/keep/:filter/:keepId" component={KeepDetails} /> */}
       <Route path="/keep/:filter" component={AppKeep} />
-      <Route path="/keep" component={AppKeep} />
       <Route path="/book/:bookId" component={BookDetails} />
       <Route path="/book" component={BookApp} />
       <Route path="/about" component={About} />
