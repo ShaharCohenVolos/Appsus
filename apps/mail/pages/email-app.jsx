@@ -19,7 +19,7 @@ export class EmailApp extends React.Component {
   removeComposeEvent
 
   componentDidMount() {
-    
+
     this.loadEmails().then(() => eventBusService.emit('unread-count', emailService.getUnreadCount()))
     this.removeFilterEvent = eventBusService.on('email-filter', (filter) => {
       this.setState({ filter },
@@ -54,6 +54,18 @@ export class EmailApp extends React.Component {
       .then(this.loadEmails)
   }
 
+  onDeleteEmail = (ev, emailId) => {
+    ev.stopPropagation()
+    emailService.deleteEmail(emailId)
+      .then(this.loadEmails)
+  }
+
+  onReadEmail = (ev, emailId) => {
+    ev.stopPropagation()
+    emailService.changeReadStatus(emailId)
+      .then(this.loadEmails)
+  }
+
   loadEmails = () => {
     return emailService.query(this.state.folder, this.state.filter, this.state.sortBy)
       .then(emails => this.setState({ emails }))
@@ -65,7 +77,7 @@ export class EmailApp extends React.Component {
     if (!emails) return <h1>Loading...</h1>
     return <section className="email-app main-layout">
       <EmailSort onSetSort={this.onSetSort} />
-      <EmailList emails={emails} onStarEmail={this.onStarEmail} />
+      <EmailList emails={emails} onDeleteEmail={this.onDeleteEmail} onReadEmail={this.onReadEmail} onStarEmail={this.onStarEmail} />
     </section>
 
   }

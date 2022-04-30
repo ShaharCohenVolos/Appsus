@@ -1,5 +1,5 @@
 import { storageService } from "../../../services/storage.service.js"
-import {utilService} from "../../../services/util.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 export const keepService = {
     query,
@@ -52,25 +52,25 @@ const gKeeps = [
     },
 ]
 
-function query(filterBy){
-    
-    let keeps = _loadFromStorage()
-    
-    if(!keeps) {
-        keeps = gKeeps
-        _saveToStorage(keeps)
-    }
- 
-    
-    if(filterBy !== 'all' && filterBy) {
+function query(filterBy) {
 
-        let type = filterBy
-        keeps = keeps.filter(keep => {
-            return keep.type === type
-        })
-    }
+  let keeps = _loadFromStorage()
 
-    return Promise.resolve(keeps)
+  if (!keeps) {
+    keeps = gKeeps
+    _saveToStorage(keeps)
+  }
+
+
+  if (filterBy !== 'all' && filterBy) {
+
+    let type = filterBy
+    keeps = keeps.filter(keep => {
+      return keep.type === type
+    })
+  }
+
+  return Promise.resolve(keeps)
 }
 
 
@@ -88,22 +88,22 @@ function getFromId(id){
 }
 
 function remove(id) {
-    let keeps = _loadFromStorage()
-    keeps = keeps.filter(keep => keep.id !== id)
-    _saveToStorage(keeps)
+  let keeps = _loadFromStorage()
+  keeps = keeps.filter(keep => keep.id !== id)
+  _saveToStorage(keeps)
 
-    return Promise.resolve()
+  return Promise.resolve()
 }
 
-function bgcColor(color, id){
-    let keeps = _loadFromStorage()
-    let keep = keeps.find(keep => keep.id === id)
-    keep.style.backgroundColor = color
-    _saveToStorage(keeps)
-    return Promise.resolve()
+function bgcColor(color, id) {
+  let keeps = _loadFromStorage()
+  let keep = keeps.find(keep => keep.id === id)
+  keep.style.backgroundColor = color
+  _saveToStorage(keeps)
+  return Promise.resolve()
 }
 
-function saveKeep(keep){
+function saveKeep(keep) {
 
      _add(keep)
      return Promise.resolve()
@@ -117,9 +117,9 @@ function _add(keep){
 }
 
 function _saveToStorage(keeps) {
-    storageService.saveToStorage(KEEP_STORAGE_KEY, keeps)
+  storageService.saveToStorage(KEEP_STORAGE_KEY, keeps)
 }
 
 function _loadFromStorage() {
-    return storageService.loadFromStorage(KEEP_STORAGE_KEY)
+  return storageService.loadFromStorage(KEEP_STORAGE_KEY)
 }

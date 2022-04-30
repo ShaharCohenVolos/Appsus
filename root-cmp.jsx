@@ -26,7 +26,7 @@ export function App() {
       <Route path="/keep/:filter" component={AppKeep} />
       <Route path="/book/:bookId" component={BookDetails} />
       <Route path="/book" component={BookApp} />
-      <Route path="/about" component={About} />
+      {/* <Route path="/about" component={About} /> */}
       <Route path="/" component={Home} />
     </Switch>
   </Router >

@@ -49,7 +49,7 @@ export class KeepPreview extends React.Component {
                   <li key={idx}>
                     {todo.charAt(0) === " " ? todo.substring(1) : todo}
                   </li>
-                );
+                )
               })}
             </ul>
           ) : (
@@ -67,6 +67,6 @@ export class KeepPreview extends React.Component {
         </div>
         <KeepExpend/>
       </article>
-    );
+    )
   }
 }

@@ -1,7 +1,7 @@
 import { emailUtilService } from '../services/email.util.service.js'
 import { emailService } from '../services/email.service.js'
 import { EmailStar } from './email-star.jsx'
-const { Link, withRouter } = ReactRouterDOM
+const { withRouter } = ReactRouterDOM
 
 class _EmailPreview extends React.Component {
 
@@ -22,6 +22,10 @@ class _EmailPreview extends React.Component {
         <h1 className="subject">{email.subject}</h1>
         <h3 className="body">{email.body}</h3>
         <h4 className="sent-at">{emailUtilService.getTimeToShow(email.sentAt)}</h4>
+        <div className="btn-container">
+          <button className="read-btn" onClick={(ev) => this.props.onReadEmail(ev, email.id)}></button>
+          <button className="delete-btn" onClick={(ev) => this.props.onDeleteEmail(ev, email.id)}></button>
+        </div>
       </ article>
     </ section >
   }
