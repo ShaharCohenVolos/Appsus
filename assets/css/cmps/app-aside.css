@@ -3,14 +3,16 @@
   height: 100%;
   position: fixed;
   z-index: 10;
-  padding-top: 100px;
+  top: 80px;
   width: 75%;
+  padding-top: 1rem;
 }
 
 @media screen and (min-width:800px) {
   .app-aside {
     z-index: 0;
     width: 256px;
+    top: 0;
     padding-top: 70px;
     left: unset
   }

@@ -4,12 +4,18 @@
 }
 
 .app-home .welcome-banner {
-  height: 70%;
-  width: 100%;
+  height: 100%;
   width: 100%;
   background-image: url(../../img/banner.jpg);
   display: flex;
   margin-bottom: 4em;
+  flex-direction: column;
+}
+
+@media screen and (min-width:800px) {
+  .app-home .welcome-banner {
+    height: 70%;
+  }
 }
 
 .app-home .logo {
@@ -18,6 +24,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
 }
 
 @media screen and (min-width:800px) {
@@ -28,10 +35,63 @@
   .app-home .icon {
     width: 500px;
   }
+}
 
-  .app-home .appsus {
-    font-size: 10rem;
+.app-home .get-started {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.app-home .get-started h2 {
+  color: white;
+  font-size: 2rem;
+}
+
+.app-home .get-started .link-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+@media screen and (min-width:800px) {
+  .app-home .get-started .link-container {
+    flex-direction: row;
   }
+}
+
+.app-home .get-started .link-container>* {
+  color: white;
+  background-color: rgb(0, 160, 0);
+  padding: 1em;
+  border-radius: 10px;
+  text-decoration: none;
+  width: 10rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.app-home .get-started .link-container>*:hover {
+  box-shadow: 0 0 16px 0 var(--clr1);
+  background-color: rgb(0, 140, 0);
+}
+
+.app-home .get-started .link-container .book-link::before {
+  font-family: 'fa-solid';
+  content: '\f02d\00A0\00A0';
+}
+
+.app-home .get-started .link-container .email-link::before {
+  font-family: 'fa-solid';
+  content: '\40\00A0\00A0';
+}
+
+.app-home .get-started .link-container .keep-link::before {
+  font-family: 'fa-solid';
+  content: '\f0eb\00A0\00A0';
 }
 
 .app-home .icon {
@@ -42,7 +102,7 @@
 .app-home .appsus {
   font-size: 6rem;
   color: white;
-  padding: 3rem;
+  padding: 0;
 }
 
 .app-home .links {
@@ -51,32 +111,6 @@
   justify-content: space-around;
   padding-left: 5em;
   padding-right: 5em;
-}
-
-.app-home a {
-  display: flex;
-}
-
-.app-home .links>* {
-  color: white;
-  text-decoration: none;
-  font-size: 5rem;
-  font-weight: bolder;
-}
-
-.app-home .email-link::before {
-  font-family: 'fa-solid';
-  content: '\40\00A0\00A0';
-}
-
-.app-home .keep-link::before {
-  font-family: 'fa-solid';
-  content: '\f0eb\00A0\00A0';
-}
-
-.app-home .book-link::before {
-  font-family: 'fa-solid';
-  content: '\f02d\00A0\00A0';
 }
 
 .app-home .card-container {

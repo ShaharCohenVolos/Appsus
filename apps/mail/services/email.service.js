@@ -169,6 +169,7 @@ function _loadFromStorage() {
   return storageService.loadFromStorage(KEY)
 }
 
+
 function _makeEmail(subject, body, isRead, removedAt, isStarred, sentAt, to, authorName, authorEmail) {
   return {
     id: utilService.makeId(),
@@ -184,14 +185,15 @@ function _makeEmail(subject, body, isRead, removedAt, isStarred, sentAt, to, aut
   }
 }
 
+
 function _makeEmails() {
   return [
     _makeEmail(
       'Miss you!',
       'Would love to catch up sometimes',
-      true,
-      null,
-      true,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
       Date.now(),
       'momo@momo.com',
       loggedInUser.fullName,
@@ -200,20 +202,21 @@ function _makeEmails() {
     _makeEmail(
       'How are you?',
       'How are you doing',
-      true,
-      null,
-      false,
-      1641146016652, 'bob@gmail.com',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
       loggedInUser.fullName,
       loggedInUser.email
     ),
     _makeEmail(
       'Check out new APIs on RapidAPI',
       "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
-      false,
-      null,
-      false,
-      1644346016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Team RapidAPI',
       'support@rapidapi.com'
@@ -221,10 +224,10 @@ function _makeEmails() {
     _makeEmail(
       'There’s a podcast for everyone. Find yours.',
       "Want to know what's good when it comes to podcasts?",
-      false,
-      null,
-      false,
-      1611146016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Spotify ',
       'no-reply@spotify.com'
@@ -232,10 +235,10 @@ function _makeEmails() {
     _makeEmail(
       'Car Extended Warranty',
       'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
-      false,
+      Math.random() > 0.7 ? true : false,
       Date.now(),
-      false,
-      1574346016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Warranty Master',
       'warrantym@appsus.com'
@@ -243,10 +246,10 @@ function _makeEmails() {
     _makeEmail(
       'Lorem Ipsum',
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      true,
+      Math.random() > 0.7 ? true : false,
       Date.now() - 1000,
-      false,
-      0,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Mr. Lorem',
       'lorem@ipsum.com'
@@ -254,10 +257,10 @@ function _makeEmails() {
     _makeEmail(
       'Your Dropbox is lonely. Add some files!',
       "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
-      true,
-      null,
-      true,
-      1574346016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Dropbox',
       'no-reply@dropbox.com'
@@ -265,10 +268,10 @@ function _makeEmails() {
     _makeEmail(
       'Important policy updates coming to Discord',
       "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
-      true,
-      null,
-      true,
-      Date.now() - 100000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Discord ',
       'no-reply@dropbox.com'
@@ -277,10 +280,10 @@ function _makeEmails() {
     _makeEmail(
       'Hello!',
       "Hello there",
-      true,
-      null,
-      false,
-      0,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       'world@universe.all',
       loggedInUser.fullName,
       loggedInUser.email
@@ -288,10 +291,10 @@ function _makeEmails() {
     _makeEmail(
       'Miss you!',
       'Would love to catch up sometimes',
-      true,
-      null,
-      true,
-      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       'momo@momo.com',
       loggedInUser.fullName,
       loggedInUser.email
@@ -299,20 +302,21 @@ function _makeEmails() {
     _makeEmail(
       'How are you?',
       'How are you doing',
-      true,
-      null,
-      false,
-      1641146016652, 'bob@gmail.com',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      'bob@gmail.com',
       loggedInUser.fullName,
       loggedInUser.email
     ),
     _makeEmail(
       'Check out new APIs on RapidAPI',
       "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
-      true,
-      null,
-      true,
-      1144346016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Team RapidAPI',
       'support@rapidapi.com'
@@ -320,10 +324,10 @@ function _makeEmails() {
     _makeEmail(
       'There’s a podcast for everyone. Find yours.',
       "Want to know what's good when it comes to podcasts?",
-      true,
-      Date.now() - 1000,
-      true,
-      1611146016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Spotify ',
       'no-reply@spotify.com'
@@ -331,10 +335,10 @@ function _makeEmails() {
     _makeEmail(
       'Car Extended Warranty',
       'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
-      true,
-      null,
-      true,
-      1274326036652,
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Warranty Master',
       'warrantym@appsus.com'
@@ -342,10 +346,10 @@ function _makeEmails() {
     _makeEmail(
       'Lorem Ipsum',
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      false,
-      null,
-      true,
-      123456,
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Mr. Lorem',
       'lorem@ipsum.com'
@@ -353,10 +357,10 @@ function _makeEmails() {
     _makeEmail(
       'Your Dropbox is lonely. Add some files!',
       "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
-      false,
-      Date.now() - 1000,
-      false,
-      1424346016652,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Dropbox',
       'no-reply@dropbox.com'
@@ -364,10 +368,10 @@ function _makeEmails() {
     _makeEmail(
       'Important policy updates coming to Discord',
       "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
-      false,
-      Date.now() - 1000,
-      false,
-      Date.now() - 123456,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       loggedInUser.email,
       'Discord ',
       'no-reply@dropbox.com'
@@ -376,10 +380,910 @@ function _makeEmails() {
     _makeEmail(
       'Hello!',
       "Hello there",
-      false,
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
       Date.now() - 1000,
-      true,
-      Date.now() - 222222,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'world@universe.all',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Miss you!',
+      'Would love to catch up sometimes',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'momo@momo.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'How are you?',
+      'How are you doing',
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      'bob@gmail.com',
+      loggedInUser.fullName,
+      loggedInUser.email
+    ),
+    _makeEmail(
+      'Check out new APIs on RapidAPI',
+      "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Team RapidAPI',
+      'support@rapidapi.com'
+    ),
+    _makeEmail(
+      'There’s a podcast for everyone. Find yours.',
+      "Want to know what's good when it comes to podcasts?",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Spotify ',
+      'no-reply@spotify.com'
+    ),
+    _makeEmail(
+      'Car Extended Warranty',
+      'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
+      Math.random() > 0.7 ? true : false,
+      Date.now(),
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Warranty Master',
+      'warrantym@appsus.com'
+    ),
+    _makeEmail(
+      'Lorem Ipsum',
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      Math.random() > 0.7 ? true : false,
+      Date.now() - 1000,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Mr. Lorem',
+      'lorem@ipsum.com'
+    ),
+    _makeEmail(
+      'Your Dropbox is lonely. Add some files!',
+      "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Dropbox',
+      'no-reply@dropbox.com'
+    ),
+    _makeEmail(
+      'Important policy updates coming to Discord',
+      "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
+      loggedInUser.email,
+      'Discord ',
+      'no-reply@dropbox.com'
+    ),
+
+    _makeEmail(
+      'Hello!',
+      "Hello there",
+      Math.random() > 0.7 ? true : false,
+      Math.random() > 0.7 ? Date.now() - 1000 : null,
+      Math.random() > 0.7 ? true : false,
+      Math.random() * Date.now(),
       'world@universe.all',
       loggedInUser.fullName,
       loggedInUser.email

@@ -40,15 +40,17 @@ export class EmailCompose extends React.Component {
       <button className="compose-btn" onClick={this.onStartComposing}><h1 className="plus"></h1><h1>Compose</h1></button>
       {email && <form onSubmit={this.onSendMail} >
         <header className="form-header">
-          <h1>New Email</h1>
+          <h1>New Message</h1>
           <button className="close-btn" type="button" onClick={this.onStopComposing}></button>
         </header>
         <main className="form-body">
           <input className="to" type="email" name="to" placeholder="Recipients" onChange={this.handleChange} autoFocus={true} />
           <input className="subject" type="text" name="subject" placeholder="Subject" onChange={this.handleChange} value={email.subject} />
           <textarea className="body" name="body" onChange={this.handleChange} value={email.body} />
+          <section className='btn-container'>
+            <button className="send-btn">Send</button>
+          </section>
         </main>
-        <button className="send-btn">Send</button>
       </form>}
     </section>
   }

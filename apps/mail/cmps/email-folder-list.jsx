@@ -28,7 +28,6 @@ export class EmailFolderList extends React.Component {
       <NavLink to="/email/starred" className="starred">Starred</NavLink>
       <NavLink to="/email/sent" className="sent">Sent</NavLink>
       <NavLink to="/email/trash" className="trash">Trash</NavLink>
-      {/* <NavLink to="/email/draft" className="draft">Draft</NavLink> */}
       <NavLink to="/email/all" className="all-mail">All Mail</NavLink>
     </nav>
   }

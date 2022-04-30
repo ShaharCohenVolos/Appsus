@@ -15,20 +15,16 @@ class _AppAside extends React.Component {
   };
 
   render() {
-    const status = this.state.isHidden ? "hidden" : "visible";
-    if (this.props.location.pathname === "/") return <React.Fragment />;
-    return (
-      <aside className={`app-aside ${status}`}>
-        <div className="page-cover" onClick={this.toggleAside}></div>
-        <button className="menu-btn" onClick={this.toggleAside}></button>
-        {/* <section className="aside-list"> */}
-          <Route path="/email" component={EmailCompose} />
-          <Route path="/email" component={EmailFolderList} />
-          <Route path="/keep" component={KeepNavList} />
-        {/* </section> */}
-        <AppFooter />
-      </aside>
-    );
+    const status = this.state.isHidden ? 'hidden' : 'visible'
+    if (this.props.location.pathname === '/' || this.props.location.pathname === '/book') return <React.Fragment />
+    return <aside className={`app-aside ${status}`}>
+      <div className="page-cover" onClick={this.toggleAside}></div>
+      <button className="menu-btn" onClick={this.toggleAside}></button>
+      <Route path="/email" component={EmailCompose} />
+      <Route path="/email" component={EmailFolderList} />
+      <Route path="/keep" component={KeepNavList} />
+      <AppFooter />
+    </aside>
   }
 }
 
