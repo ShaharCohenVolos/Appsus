@@ -17,8 +17,8 @@ export class EmailSort extends React.Component {
     if (this.state.sortBy.title === undefined) titleTxt = 'Title'
 
     return <section className="email-sort">
-      <button className="by-title" name="title" onClick={this.onSetSortBy}>{titleTxt}</button>
       <button className="by-date" name="date" onClick={this.onSetSortBy}>{dateTxt}</button>
+      <button className="by-title" name="title" onClick={this.onSetSortBy}>{titleTxt}</button>
     </section>
   }
 }

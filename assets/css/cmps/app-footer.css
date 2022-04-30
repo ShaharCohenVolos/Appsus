@@ -1,0 +1,7 @@
+.app-footer {
+  position: absolute;
+  bottom: 0;
+  font-size: .6rem;
+  padding: .625em;
+  color: var(--clr1);
+}

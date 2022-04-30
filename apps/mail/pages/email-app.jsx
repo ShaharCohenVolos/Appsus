@@ -28,7 +28,7 @@ export class EmailApp extends React.Component {
     })
 
     this.removeComposeEvent = eventBusService.on('send-email', (email) => {
-      emailService.addEmail(email)
+      emailService.addEmail(email).then(() => eventBusService.emit('user-msg', { txt: 'Email Sent', type: 'success' }))
       this.loadEmails()
     })
   }
@@ -48,6 +48,12 @@ export class EmailApp extends React.Component {
     this.setState({ sortBy }, this.loadEmails)
   }
 
+  onStarEmail = (ev, emailId) => {
+    ev.stopPropagation()
+    emailService.toggleStar(emailId)
+      .then(this.loadEmails)
+  }
+
   loadEmails = () => {
     return emailService.query(this.state.folder, this.state.filter, this.state.sortBy)
       .then(emails => this.setState({ emails }))
@@ -59,7 +65,7 @@ export class EmailApp extends React.Component {
     if (!emails) return <h1>Loading...</h1>
     return <section className="email-app main-layout">
       <EmailSort onSetSort={this.onSetSort} />
-      <EmailList emails={emails} />
+      <EmailList emails={emails} onStarEmail={this.onStarEmail} />
     </section>
 
   }

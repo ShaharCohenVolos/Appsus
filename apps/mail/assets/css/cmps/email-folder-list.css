@@ -40,6 +40,11 @@
   content: '\f01c\00A0\00A0';
 }
 
+.email-folder-list .starred::before {
+  font-family: 'fa-solid';
+  content: '\f005\00A0\00A0';
+}
+
 .email-folder-list .sent::before {
   font-family: 'fa-solid';
   content: '\f064\00A0\00A0';

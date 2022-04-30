@@ -1,18 +1,17 @@
 .app-aside {
   background-color: var(--bgclr);
-  height: 100vh;
+  height: 100%;
   position: fixed;
   z-index: 10;
   padding-top: 100px;
   width: 75%;
-
 }
 
 @media screen and (min-width:800px) {
   .app-aside {
+    z-index: 0;
     width: 256px;
-    padding-top: 0;
-    top: 70px;
+    padding-top: 70px;
     left: unset
   }
 }
