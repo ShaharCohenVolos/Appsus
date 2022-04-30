@@ -120,6 +120,9 @@ function _getEmailsFromFolder(emails, folder) {
     case 'inbox':
       emails = emails.filter(email => email.to === loggedInUser.email && !email.isDeleted)
       break
+    case 'starred':
+      emails = emails.filter(email => email.isStarred)
+      break
     case 'sent':
       emails = emails.filter(email => email.authorEmail === loggedInUser.email && !email.isDeleted)
       break
