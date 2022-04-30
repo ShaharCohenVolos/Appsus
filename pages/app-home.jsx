@@ -10,7 +10,7 @@ export function Home() {
         <h1 className="appsus">Appsus</h1>
       </div>
       <section className="get-started">
-        <h2>Let's get started...!</h2>
+        <h2>Let's get started...</h2>
         <div className="link-container" >
           <Link to="/book" className="book-link">Books</Link>
           <Link to="/email/inbox" className="email-link">Email</Link>
