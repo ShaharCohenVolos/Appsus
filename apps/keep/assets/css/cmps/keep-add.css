@@ -56,6 +56,11 @@
   content: "\f03a";
   font-size: 20px;
 }
+.keep-add form .add-video::before{
+  font-family: "fa-solid";
+  content: "\f03d";
+  font-size: 20px;
+}
 
 .keep-add form .add-pic::before {
   font-family: "fa-solid";

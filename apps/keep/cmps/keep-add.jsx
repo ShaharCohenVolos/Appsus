@@ -16,16 +16,18 @@ export class KeepAdd extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props.location.search)
-    if (!this.props.location.search) return
-    const urlSrcPrm = new URLSearchParams(this.props.location.search)
-    this.setState((prevState) =>
-    ({ keep: {
-      ...prevState.keep,
-      id: '',
-      title: urlSrcPrm.get('title'),
-      content: urlSrcPrm.get('content') },
-    isExpended:true, }))
+    console.log(this.props.location.search);
+    if (!this.props.location.search) return;
+    const urlSrcPrm = new URLSearchParams(this.props.location.search);
+    this.setState((prevState) => ({
+      keep: {
+        ...prevState.keep,
+        id: "",
+        title: urlSrcPrm.get("title"),
+        content: urlSrcPrm.get("content"),
+      },
+      isExpended: true,
+    }));
   }
 
   handleChange = ({ target }) => {
@@ -35,6 +37,8 @@ export class KeepAdd extends React.Component {
       keep: { ...prevState.keep, [name]: value },
     }));
   };
+
+
 
   handleExpended = () => {
     this.setState({ isExpended: true });
@@ -63,38 +67,20 @@ export class KeepAdd extends React.Component {
         title: "",
         content: "",
         style: {
-          backgroundColor: "#fff",
+          backgroundColor: "#ffffff",
         },
       },
 
       isExpended: false,
     });
-
-    // this.props
-    //   .onAdd(keep)
-    //   .then(() => {
-    //     this.setState({
-    //       keep: {
-    //         id: '',
-    //         type: "keep-txt",
-    //         title: "",
-    //         content: "",
-    //         style: {
-    //           backgroundColor: '#fff'
-    //         }
-    //       },
-
-    //       isExpended: false,
-    //     });
-    //   })
   };
 
   render() {
     const { isExpended } = this.state;
     const { title, content, type } = this.state.keep;
     return (
-      <section className="keep-add">
-        <form onSubmit={this.onSubmit} id="add-form">
+      <section className="keep-add" >
+        <form onSubmit={this.onSubmit} id="add-form" >
           {isExpended && (
             <input
               value={title}
@@ -116,6 +102,8 @@ export class KeepAdd extends React.Component {
                     ? "Enter URL..."
                     : type === "note-todos"
                     ? "Enter tasks seperated by commas"
+                    : type === "note-vid"
+                    ? "Enter a Youtube URL"
                     : "Make a keep..."
                 }
                 onChange={this.handleChange}
@@ -128,7 +116,7 @@ export class KeepAdd extends React.Component {
               onClick={this.handleChange}
               type="button"
               className="add-pic"
-              title="add pic"
+              title="Add Pic"
             ></button>
             <button
               name="type"
@@ -136,7 +124,15 @@ export class KeepAdd extends React.Component {
               onClick={this.handleChange}
               type="button"
               className="add-list"
-              title="add-list"
+              title="Add List"
+            ></button>
+            <button
+              name="type"
+              value="note-vid"
+              onClick={this.handleChange}
+              type="button"
+              className="add-video"
+              title="Add Video"
             ></button>
           </div>
 

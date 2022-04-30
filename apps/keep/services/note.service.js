@@ -7,6 +7,7 @@ export const keepService = {
     remove,
     saveKeep,
     bgcColor,
+    fixYoutubeUrl,
 }
 
 const KEEP_STORAGE_KEY = 'keepBD'
@@ -39,7 +40,16 @@ const gKeeps = [
         style: {
         backgroundColor: "#2E8B57",
         }
-    }
+    }, 
+       {
+        id: "n104",
+        type: "note-vid",
+        title: "Witcher Logic",
+        content: "https://www.youtube.com/embed/ldtZMgyPXmc",
+        style: {
+        backgroundColor: "teal",
+        }
+    },
 ]
 
 function query(filterBy){
@@ -61,6 +71,14 @@ function query(filterBy){
     }
 
     return Promise.resolve(keeps)
+}
+
+
+function fixYoutubeUrl(Url){
+    
+    Url.replace('watch?v=', 'embed')
+    const newUrl = Url.replace('watch?v=', 'embed/')
+    return newUrl
 }
 
 function getFromId(id){
@@ -87,14 +105,15 @@ function bgcColor(color, id){
 
 function saveKeep(keep){
 
-    return _add(keep)
+     _add(keep)
+     return Promise.resolve()
 }
 
 function _add(keep){
     let keeps = _loadFromStorage()
     keeps = [keep, ... keeps]
     _saveToStorage(keeps)
-    return Promise.resolve()
+    // return Promise.resolve()
 }
 
 function _saveToStorage(keeps) {

@@ -10,7 +10,7 @@ export class AppKeep extends React.Component {
   };
 
   componentDidMount() {
-    this.loadKeeps();
+    
     eventBusService.on("filter-chng", (filterBy) => {
       this.loadKeeps(filterBy);
     });
@@ -18,6 +18,7 @@ export class AppKeep extends React.Component {
     eventBusService.on('add-keep', (keep) => {
       this.onAddKeep(keep)
     })
+    this.loadKeeps();
   }
 
   loadKeeps = (filterBy = null) => {
@@ -29,8 +30,8 @@ export class AppKeep extends React.Component {
   onAddKeep = (newKeep) => {
     keepService.saveKeep(newKeep).then(() => {
       this.loadKeeps();
+      eventBusService.emit("keep-added", newKeep)
     });
-    // return Promise.resolve();
   };
 
   onDeleteKeeps = (id) => {
@@ -47,10 +48,6 @@ export class AppKeep extends React.Component {
     return (
       <section className="keep-app main-layout">
         <Route path="/keep" component={KeepAdd}/>
-        {/* <KeepAdd
-          onAdd={this.onAddKeep}
-          searchParams={this.props.location.search}
-        /> */}
         <section className="keep-container">
           {keeps.map((keep, idx) => (
             <KeepPreview

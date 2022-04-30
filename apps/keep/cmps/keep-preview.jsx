@@ -1,5 +1,8 @@
 import { KeepEditBgc } from "./edit-keep-bgc.jsx";
-import { KeepToMail} from "./keep-to-mail.jsx"
+import { KeepToMail } from "./keep-to-mail.jsx";
+import { eventBusService } from "../../../services/event-bus-service.js"
+import { keepService } from "../services/note.service.js";
+import { KeepExpend } from "./keep-expend.jsx"
 
 export class KeepPreview extends React.Component {
   state = {
@@ -8,30 +11,37 @@ export class KeepPreview extends React.Component {
 
   componentDidMount() {
     this.loadKeep();
+
+    eventBusService.on("keep-added", (keep) => {
+      this.loadKeep(keep)
+    })
   }
 
-  
-
-  loadKeep = () => {
-    const { keep } = this.props;
+  loadKeep = (keep = this.props.keep) => {
     this.setState({ keep });
   };
 
   onColorChange = ({ target }) => {
-    const { value, name } = target;
-    const {id} = this.state.keep
-    this.props.onColor(value, id)
+    const { value, name} = target;
+    const { id } = this.state.keep;
+    this.props.onColor(value, id);
   };
 
   render() {
-    const { keep} = this.props;
+    const { keep } = this.props;
 
     return (
       <article className="keep" style={keep.style}>
         <h1>{keep.title}</h1>
-        <p>
+        {/* <p> */}
           {keep.type === "note-img" ? (
             <img src={keep.content} />
+          ) : keep.type === "note-vid" ? (
+            <iframe src={keepService.fixYoutubeUrl(keep.content)} 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen></iframe>
           ) : keep.type === "note-todos" ? (
             <ul className="keep-todos">
               {keep.content.split(",").map((todo, idx) => {
@@ -43,20 +53,19 @@ export class KeepPreview extends React.Component {
               })}
             </ul>
           ) : (
-            keep.content
+           <p>{keep.content}</p>
           )}
-        </p>
+        {/* </p> */}
         <div className="edit-container">
           <button
             onClick={() => this.props.onDelete(keep.id)}
             className="del-keep"
             title="Delete Keep"
           ></button>
-          <KeepToMail keep={keep}/>
-          <KeepEditBgc keep={keep} 
-          onColor={this.onColorChange} 
-          />
+          <KeepToMail keep={keep} />
+          <KeepEditBgc keep={keep} onColor={this.onColorChange} />
         </div>
+        <KeepExpend/>
       </article>
     );
   }
