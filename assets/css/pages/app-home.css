@@ -45,9 +45,16 @@
   justify-content: space-evenly;
 }
 
+.app-home .get-started h3 {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+}
+
 .app-home .get-started h2 {
   color: white;
   font-size: 2rem;
+  text-align: center;
 }
 
 .app-home .get-started .link-container {
