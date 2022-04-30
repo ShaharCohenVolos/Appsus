@@ -29,7 +29,6 @@ export class EmailCompose extends React.Component {
 
   onSendMail = (ev) => {
     ev.preventDefault()
-    console.log(this.state.email)
     eventBusService.emit('send-email', this.state.email)
     this.setState({ email: null })
   }

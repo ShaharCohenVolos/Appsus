@@ -10,12 +10,27 @@
   width: 100%;
   position: fixed;
   z-index: 10;
+  height: 170px;
+
 }
 
 @media screen and (min-width: 800px) {
   .app-header {
+    height: 70px;
     flex-direction: row;
   }
+}
+
+.app-header .logo {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  text-decoration: none;
+}
+
+.app-header .name {
+  color: var(--brndclr);
+
 }
 
 .app-header .drop-down {
@@ -25,6 +40,8 @@
   padding-left: 1em;
   padding-right: 1em;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .app-header .drop-down::before {
@@ -37,6 +54,7 @@
   position: absolute;
   transform: translateX(-100%);
   left: 200%;
+  top: 100%;
   background-color: var(--bgclr);
   box-shadow: 0 0 8px 0 var(--clr4);
   border-radius: 10px;
