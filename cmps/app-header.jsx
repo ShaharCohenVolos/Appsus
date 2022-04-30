@@ -13,7 +13,6 @@ export class AppHeader extends React.Component {
       <div className="drop-down">
         <nav className="drop-down-content">
           <NavLink to="/" exact> Home </NavLink>
-          {/* <NavLink to="/about"> About </NavLink> */}
           <NavLink to="/email/inbox"> Email </NavLink>
           <NavLink to="/keep/all"> Keep </NavLink>
           <NavLink to="/book"> Book </NavLink>

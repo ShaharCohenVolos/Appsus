@@ -24,7 +24,6 @@
 
 /* Keep App */
 @import '../../apps/keep/assets/css/keep-app.css';
-@import '../../apps/keep/assets/css/cmps/keep-list.css';
 @import '../../apps/keep/assets/css/cmps/keep-preview.css';
 @import '../../apps/keep/assets/css/cmps/keep-sidebar.css';
 @import '../../apps/keep/assets/css/cmps/keep-expend.css';

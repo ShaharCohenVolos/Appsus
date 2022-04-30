@@ -58,7 +58,7 @@ export class BookDetails extends React.Component {
     if (!categories) categories = ['Unknown']
 
     return (
-      <section className="book-details main-layout">
+      <section className="book-details no-aside-layout">
 
         <nav>
           <Link className="go-back" to="/book">« Back</Link>

@@ -17,7 +17,7 @@ class _AppAside extends React.Component {
 
   render() {
     const status = this.state.isHidden ? 'hidden' : 'visible'
-    if (this.props.location.pathname === '/') return <React.Fragment />
+    if (this.props.location.pathname === '/' || this.props.location.pathname === '/book') return <React.Fragment />
     return <aside className={`app-aside ${status}`}>
       <div className="page-cover" onClick={this.toggleAside}></div>
       <button className="menu-btn" onClick={this.toggleAside}></button>

@@ -44,7 +44,7 @@ export class BookApp extends React.Component {
     const { books } = this.state
 
     return (
-      <section className="book-app main-layout">
+      <section className="book-app no-aside-layout">
         <BookAdd onAddBook={this.onAddBook} />
         <BookFilter onSetFilter={this.onSetFilter} />
         <BookList books={books} />

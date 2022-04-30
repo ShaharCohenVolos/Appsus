@@ -4,16 +4,10 @@ export function Home() {
 
   return <main className="app-home no-aside-layout">
     <section className="welcome-banner">
-      {/* <h2 className="greet">Welcome to</h2> */}
       <div className="logo">
         <img className="icon" src="../assets/img/logo.svg" alt="logo" />
         <h1 className="appsus">Appsus</h1>
       </div>
-      {/* <nav className="links">
-        <Link to="/email/inbox" className="email-link"> Email </Link>
-        <Link to="/keep/all" className="keep-link"> Keep </Link>
-        <Link to="/book" className="book-link"> Book </Link>
-      </nav> */}
     </section>
     <section className="card-container">
       <div className="card">
