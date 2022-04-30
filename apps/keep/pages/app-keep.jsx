@@ -20,12 +20,6 @@ export class AppKeep extends React.Component {
     })
   }
 
-  onSetFilterBy = () => {
-    const filterBy = this.props.match.params.filter;
-
-    return Promise.resolve(filterBy);
-  };
-
   loadKeeps = (filterBy = null) => {
     keepService.query(filterBy).then((keeps) => {
       this.setState({ keeps });
