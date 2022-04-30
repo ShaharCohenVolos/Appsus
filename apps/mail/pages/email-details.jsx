@@ -55,7 +55,7 @@ export class EmailDetails extends React.Component {
     return <section className="email-details main-layout">
       <section className="btn-container">
         <Link className="back-btn" title="Back" to={`/email/${folder}`}></Link>
-        <Link className="save-btn" title="Send to Keep" to={`/keep/?subject=${email.subject}&body=${email.body}`}></Link>
+        <Link className="save-btn" title="Send to Keep" to={`/keep/all?title=${email.subject}&content=${email.body}`}></Link>
         <EmailStar email={email} onStarEmail={this.onStarEmail} />
         <button className="delete-btn" title="Delete" onClick={this.onDeleteEmail}></button>
       </section>
