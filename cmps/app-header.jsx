@@ -6,7 +6,7 @@ export class AppHeader extends React.Component {
   render() {
     return <header className="app-header">
       <Link className="logo" to="/">
-        <img src="../assets/img/logo.svg" alt="logo" className="icon" />
+        <img src="./assets/img/logo.svg" alt="logo" className="icon" />
         <h1 className="name">Appsus</h1>
       </Link>
       <Route path="/email" component={EmailFilter} />
