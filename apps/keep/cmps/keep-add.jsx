@@ -1,9 +1,16 @@
+import {utilService} from '../../../services/util.service.js'
+
+
 export class KeepAdd extends React.Component {
   state = {
     keep: {
+      id: '',
       type: "note-txt",
       title: "",
       content: "",
+      style: {
+        backgroundColor: '#fff'
+      }
     },
     isExpended: false,
   };
@@ -22,15 +29,17 @@ export class KeepAdd extends React.Component {
 
   onSubmit = (ev) => {
     ev.preventDefault();
-    const { type, title, content } = this.state.keep;
+    const { type, title, content, style } = this.state.keep;
     if(!title) {
       alert('enter title')
       return;
     }
     const keep = {
+      id: utilService.makeId(),
       type,
       title,
       content,
+      style,
     };
 
     this.props
@@ -38,9 +47,13 @@ export class KeepAdd extends React.Component {
       .then(() => {
         this.setState({
           keep: {
+            id: '',
             type: "keep-txt",
             title: "",
             content: "",
+            style: {
+              backgroundColor: '#fff'
+            }
           },
 
           isExpended: false,

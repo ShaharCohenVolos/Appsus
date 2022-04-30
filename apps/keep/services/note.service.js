@@ -6,6 +6,7 @@ export const keepService = {
     getFromId,
     remove,
     saveKeep,
+    bgcColor,
 }
 
 const KEEP_STORAGE_KEY = 'keepBD'
@@ -15,36 +16,28 @@ const gKeeps = [
         id: "n101",
         type: "note-txt",
         isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        },
+        title: "JS",
+        content: "Hello",
         style: {
-        bgc: "#B22222"
+        backgroundColor: "#B22222",
         }
     },
     {
         id: "n102",
         type: "note-img",
-        info: {
-            url: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
-            title: "Bobi and Me"
-        },
+        title: "Bobby and I",
+        content: "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg",
         style: {
-            bgc: "#B0E0E6"
+            backgroundColor: "#B0E0E6",
         }
     },
     {
         id: "n103",
         type: "note-todos",
-        info: {
-            label: "Get my stuff together",
-            todos: [
-                { txt: "Driving liscence", doneAt: null },
-                { txt: "Coding power", doneAt: 187111111 }
-            ]
-        },
+        title: "todos",
+        content: "to, do, an, hello",
         style: {
-        bgc: "#2E8B57"
+        backgroundColor: "#2E8B57",
         }
     }
 ]
@@ -84,8 +77,16 @@ function remove(id) {
     return Promise.resolve()
 }
 
+function bgcColor(color, id){
+    let keeps = _loadFromStorage()
+    let keep = keeps.find(keep => keep.id === id)
+    keep.style.backgroundColor = color
+    _saveToStorage(keeps)
+    return Promise.resolve()
+}
+
 function saveKeep(keep){
-    keep.id = utilService.makeId()
+
     return _add(keep)
 }
 
