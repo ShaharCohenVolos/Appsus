@@ -15,6 +15,7 @@ export class KeepEditBgc extends React.Component{
         value={keep.style.backgroundColor}
         name="backgroundColor"
         className="bgc-edit-input"
+        title="Change Background"
         />
         </lable>
     }

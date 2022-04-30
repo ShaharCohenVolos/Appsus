@@ -1,4 +1,5 @@
 import { KeepEditBgc } from "./edit-keep-bgc.jsx";
+import { KeepToMail} from "./keep-to-mail.jsx"
 
 export class KeepPreview extends React.Component {
   state = {
@@ -49,7 +50,9 @@ export class KeepPreview extends React.Component {
           <button
             onClick={() => this.props.onDelete(keep.id)}
             className="del-keep"
+            title="Delete Keep"
           ></button>
+          <KeepToMail keep={keep}/>
           <KeepEditBgc keep={keep} 
           onColor={this.onColorChange} 
           />

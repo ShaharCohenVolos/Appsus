@@ -5,7 +5,7 @@
   padding: 10px;
   margin: 16px;
 
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -22,24 +22,24 @@
   margin-top: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
-  flex-grow:1;
+  flex-grow: 1;
 }
 
-.keep ul{
-  display:flex;
+.keep ul {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.edit-container{
+.edit-container {
   position: relative;
-  align-self: flex-end;  
+  align-self: flex-end;
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: space-around;
 }
 
-.edit-container>*{
+.edit-container > * {
   border: none;
   background: none;
   cursor: pointer;
@@ -47,15 +47,30 @@
   position: relative;
 }
 
-.edit-container .bgc-edit-input{
-  position:absolute;
+.edit-container .email-keep{
+  border:none;
+  margin:0;
+  padding:0;
+  background-color: inherit;
+}
+
+.edit-container .email-keep::before{
+  font-family: "fa-solid";
+  content: "\f0e0";
+  font-size: 20px;
+}
+
+.edit-container .bgc-edit-input {
+  position: absolute;
   right: 0;
   opacity: 0;
 }
-.edit-container .bgc-edit-input:hover{
-  cursor:pointer;
+
+.edit-container .bgc-edit-input:hover {
+  cursor: pointer;
 }
-.edit-container .bgc-edit::before{
+
+.edit-container .bgc-edit::before {
   font-family: "fa-solid";
   content: "\f53f";
   font-size: 20px;
@@ -66,4 +81,3 @@
   content: "\f1f8";
   font-size: 20px;
 }
-
