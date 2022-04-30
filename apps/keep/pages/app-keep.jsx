@@ -28,15 +28,21 @@ export class AppKeep extends React.Component {
   };
 
   onAddKeep = (newKeep) => {
-    keepService.saveKeep(newKeep).then(() => this.loadKeeps());
-    return Promise.resolve();
+    keepService.saveKeep(newKeep).then(() => {
+      this.loadKeeps()
+    });
+    return Promise.resolve()
   };
 
   onDeleteKeeps = (id) => {
-    console.log(id);
-    console.log(this.state.keeps);
+
     keepService.remove(id).then(() => this.loadKeeps());
   };
+
+  onBgcColorChange = (color, id) => {
+    
+    keepService.bgcColor(color, id).then(() => this.loadKeeps())
+  }
 
   render() {
     const { keeps } = this.state;
@@ -48,10 +54,8 @@ export class AppKeep extends React.Component {
           {keeps.map((keep, idx) => (
             <KeepPreview
               key={idx}
-              id={keep.id}
-              title={keep.title}
-              content={keep.content}
-              type={keep.type}
+              keep={keep}
+              onColor={this.onBgcColorChange}
               onDelete={this.onDeleteKeeps}
             />
           ))}
