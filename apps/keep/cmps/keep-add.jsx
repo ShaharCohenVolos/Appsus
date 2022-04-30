@@ -1,19 +1,32 @@
-import {utilService} from '../../../services/util.service.js'
-
+import { eventBusService } from "../../../services/event-bus-service.js";
+import { utilService } from "../../../services/util.service.js";
 
 export class KeepAdd extends React.Component {
   state = {
     keep: {
-      id: '',
+      id: "",
       type: "note-txt",
       title: "",
       content: "",
       style: {
-        backgroundColor: '#fff'
-      }
+        backgroundColor: "#fff",
+      },
     },
     isExpended: false,
   };
+
+  componentDidMount() {
+    console.log(this.props.location.search)
+    if (!this.props.location.search) return
+    const urlSrcPrm = new URLSearchParams(this.props.location.search)
+    this.setState((prevState) =>
+    ({ keep: {
+      ...prevState.keep,
+      id: '',
+      title: urlSrcPrm.get('title'),
+      content: urlSrcPrm.get('content') },
+    isExpended:true, }))
+  }
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -30,8 +43,8 @@ export class KeepAdd extends React.Component {
   onSubmit = (ev) => {
     ev.preventDefault();
     const { type, title, content, style } = this.state.keep;
-    if(!title) {
-      alert('enter title')
+    if (!title) {
+      alert("enter title");
       return;
     }
     const keep = {
@@ -42,23 +55,38 @@ export class KeepAdd extends React.Component {
       style,
     };
 
-    this.props
-      .onAdd(keep)
-      .then(() => {
-        this.setState({
-          keep: {
-            id: '',
-            type: "keep-txt",
-            title: "",
-            content: "",
-            style: {
-              backgroundColor: '#fff'
-            }
-          },
+    eventBusService.emit("add-keep", keep);
+    this.setState({
+      keep: {
+        id: "",
+        type: "keep-txt",
+        title: "",
+        content: "",
+        style: {
+          backgroundColor: "#fff",
+        },
+      },
 
-          isExpended: false,
-        });
-      })
+      isExpended: false,
+    });
+
+    // this.props
+    //   .onAdd(keep)
+    //   .then(() => {
+    //     this.setState({
+    //       keep: {
+    //         id: '',
+    //         type: "keep-txt",
+    //         title: "",
+    //         content: "",
+    //         style: {
+    //           backgroundColor: '#fff'
+    //         }
+    //       },
+
+    //       isExpended: false,
+    //     });
+    //   })
   };
 
   render() {
@@ -84,9 +112,11 @@ export class KeepAdd extends React.Component {
                 onClick={this.handleExpended}
                 name="content"
                 placeholder={
-                  (type === 'note-img') ? "Enter URL..." : 
-                  (type === 'note-todos') ? "Enter tasks seperated by commas" :
-                  "Make a keep..."
+                  type === "note-img"
+                    ? "Enter URL..."
+                    : type === "note-todos"
+                    ? "Enter tasks seperated by commas"
+                    : "Make a keep..."
                 }
                 onChange={this.handleChange}
                 rows={isExpended ? 3 : 1}
@@ -99,22 +129,23 @@ export class KeepAdd extends React.Component {
               type="button"
               className="add-pic"
               title="add pic"
-            >
-            </button>
-            <button 
-            name="type"
-            value="note-todos"
-            onClick={this.handleChange}
-            type="button"
-            className="add-list"
-            title="add-list">
-            </button>
+            ></button>
+            <button
+              name="type"
+              value="note-todos"
+              onClick={this.handleChange}
+              type="button"
+              className="add-list"
+              title="add-list"
+            ></button>
           </div>
 
-          <button className="submit" 
-          type="submit" 
-          form="add-form"
-          title="Submit">
+          <button
+            className="submit"
+            type="submit"
+            form="add-form"
+            title="Submit"
+          >
             Submit
           </button>
         </form>

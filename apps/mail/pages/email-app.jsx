@@ -19,6 +19,7 @@ export class EmailApp extends React.Component {
   removeComposeEvent
 
   componentDidMount() {
+    
     this.loadEmails().then(() => eventBusService.emit('unread-count', emailService.getUnreadCount()))
     this.removeFilterEvent = eventBusService.on('email-filter', (filter) => {
       this.setState({ filter },
