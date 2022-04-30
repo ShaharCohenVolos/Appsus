@@ -3,9 +3,10 @@
   border-radius: 7px;
   box-shadow: 0 2px 5px rgb(175, 175, 175);
   padding: 10px;
+  padding-bottom: 20px;
   margin: 16px;
 
-  max-height: 200px;
+  /* max-height: 170px; */
   /* max-width: 250px; */
   box-sizing: content-box;
 
@@ -23,7 +24,7 @@
 
 .keep p {
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   margin-top: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
