@@ -23,6 +23,10 @@
   position: relative;
 }
 
+.email-preview:hover .email-star {
+  color: var(--clr3);
+}
+
 .email-preview .author-name {
   max-width: 200px;
   font-size: 1rem;

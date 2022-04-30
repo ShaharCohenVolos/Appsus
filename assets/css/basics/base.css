@@ -5,11 +5,17 @@
 html {
   font-family: sans-serif;
   color: var(--fontclr);
+  /* height: 100% */
 }
 
 body {
   margin: 0;
   background-color: var(--bgclr);
+  /* height: 100%; */
+}
+
+#root {
+  /* height: 100%; */
 }
 
 
@@ -26,11 +32,6 @@ p {
   margin: 0;
 }
 
-img {
-  width: 100%;
-}
-
-/* EXPERIMENTAL */
 img {
   height: 100%;
   width: 100%;

@@ -9,6 +9,7 @@ import { KeepEdit } from './apps/keep/cmps/keep-edit.jsx'
 import { AppAside } from './cmps/app-aside.jsx'
 import { BookApp } from './apps/book/pages/book-app.jsx'
 import { BookDetails } from './apps/book/pages/book-details.jsx'
+import { AppFooter } from './cmps/app-footer.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM

@@ -1,0 +1,21 @@
+.email-star {
+  background: none;
+  border: none;
+  font-size: 1em;
+  border-radius: 50%;
+  padding: 0;
+  color: var(--clr2);
+  cursor: pointer;
+}
+
+.email-star::before {
+  font-family: 'fa-regular';
+  content: '\f005';
+
+}
+
+.email-star.active::before {
+  font-family: 'fa-solid';
+  content: '\f005';
+  color: rgb(255, 210, 125);
+}

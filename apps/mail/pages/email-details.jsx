@@ -1,5 +1,6 @@
 import { emailService } from '../services/email.service.js'
 import { eventBusService } from '../../../services/event-bus-service.js'
+import { EmailStar } from '../cmps/email-star.jsx'
 
 const { Link } = ReactRouterDOM
 
@@ -34,6 +35,13 @@ export class EmailDetails extends React.Component {
       .then(() => this.props.history.push(`/email/${this.props.match.params.folder}`))
   }
 
+  onStarEmail = (ev, emailId) => {
+    ev.stopPropagation()
+    emailService.toggleStar(emailId)
+      .then(this.loadEmail)
+  }
+
+
   render() {
     const { email } = this.state
     if (!email) return <h1>Loading...</h1>
@@ -44,7 +52,8 @@ export class EmailDetails extends React.Component {
     return <section className="email-details main-layout">
       <section className="btn-container">
         <Link className="back-btn" title="Back" to={`/email/${folder}`}></Link>
-        <Link className="save-btn" title="Send to Keep" to={`/keep/?subject=${email.subject}&body=${email.body}`}></Link> {/* FOR TESTING */}
+        <Link className="save-btn" title="Send to Keep" to={`/keep/?subject=${email.subject}&body=${email.body}`}></Link>
+        <EmailStar email={email} onStarEmail={this.onStarEmail} />
         <button className="delete-btn" title="Delete" onClick={this.onDeleteEmail}></button>
       </section>
       <header>
