@@ -57,35 +57,69 @@
   }
 }
 
-
 .email-details header div {
   display: flex;
   flex-direction: column;
 }
 
-.email-details header .author-info {
+.email-details .main-container {
+  display: flex;
+}
+
+.email-details .img-container {
+  width: 4.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.email-details .img-holder {
+  width: 40px;
+  height: 40px;
+  background-color: var(--clr2);
+  border-radius: 50%;
+}
+
+.email-details .main-content {
+  display: flex;
+  flex-direction: column;
+  padding-right: 1em;
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .email-details .main-content {
+    padding-right: 4.5em;
+  }
+}
+
+.email-details .author-info {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: .625em
+  gap: .625em;
 }
 
 .email-details .sent-at {
-  font-size: .8rem;
+  font-size: .75rem;
   font-weight: unset;
   color: var(--clr3);
+  padding-bottom: 2rem;
 }
 
 .email-details .subject {
-  font-size: 2rem;
+  font-size: 1.375rem;
+  font-weight: unset;
+  padding-block-end: 1.75rem;
 }
 
+
 .email-details .author-name {
-  font-size: 1.2rem;
+  font-size: .875rem;
 }
 
 .email-details .author-email {
-  font-size: 1rem;
+  font-size: .75rem;
   color: var(--clr3);
   font-weight: unset;
 }
@@ -99,13 +133,5 @@
 }
 
 .email-details .body {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-@media screen and (min-width: 800px) {
-  .email-details .body {
-    padding-left: 9.75em;
-    padding-right: 9.75em;
-  }
+  padding: 0;
 }

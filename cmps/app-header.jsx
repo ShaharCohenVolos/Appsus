@@ -12,10 +12,10 @@ export class AppHeader extends React.Component {
       <Route path="/email" component={EmailFilter} />
       <div className="drop-down">
         <nav className="drop-down-content">
-          <NavLink to="/" exact> Home </NavLink>
-          <NavLink to="/email/inbox"> Email </NavLink>
-          <NavLink to="/keep/all"> Keep </NavLink>
-          <NavLink to="/book"> Book </NavLink>
+          <NavLink className="home-link" to="/" exact></NavLink>
+          <NavLink className="email-link" to="/email/inbox"></NavLink>
+          <NavLink className="keep-link" to="/keep/all"> </NavLink>
+          <NavLink className="book-link" to="/book"> </NavLink>
         </nav>
       </div>
     </header>

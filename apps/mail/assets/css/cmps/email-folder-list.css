@@ -12,17 +12,21 @@
   transform: translate(-50%, -50%);
   right: 5%;
   top: 50%;
-  font-size: .8em;
+  font-size: .75rem;
   color: var(--brndclr);
 }
 
 .email-folder-list>* {
   text-decoration: none;
   color: var(--fontclr);
-  padding: .625em;
   border-top-right-radius: 6rem;
   border-bottom-right-radius: 6rem;
   position: relative;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: .875rem;
+  padding-left: 1.625rem;
 }
 
 .email-folder-list>*:hover {
@@ -35,9 +39,15 @@
   color: var(--brndclr);
 }
 
+.email-folder-list *::before {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
 .email-folder-list .inbox::before {
   font-family: 'fa-solid';
   content: '\f01c\00A0\00A0';
+
 }
 
 .email-folder-list .starred::before {

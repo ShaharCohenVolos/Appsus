@@ -60,16 +60,21 @@ export class EmailDetails extends React.Component {
         <button className="delete-btn" title="Delete" onClick={this.onDeleteEmail}></button>
       </section>
       <header>
-        <div>
-          <h1 className="subject">{email.subject}</h1>
+        <h1 className="subject">{email.subject}</h1>
+      </header>
+      <div className="main-container">
+        <div className="img-container">
+          <img className="img-holder" src="../../assets/img/profile.svg" alt="profile" />
+        </div>
+        <main className="main-content">
           <div className="author-info">
             <h2 className="author-name">{email.authorName}</h2>
             <h3 className="author-email">{email.authorEmail}</h3>
           </div>
           <h4 className="sent-at">{date}</h4>
-        </div>
-      </header>
-      <p className="body">{email.body}</p>
+          <p className="body">{email.body}</p>
+        </main>
+      </div>
     </section>
   }
 }
