@@ -8,3 +8,8 @@
   font-family: fa-regular;
   src: url('../../fonts/font-awesome/fa-regular-400.ttf');
 }
+
+@font-face {
+  font-family: roboto;
+  src: url('../../fonts/roboto/Roboto-Regular.ttf');
+}

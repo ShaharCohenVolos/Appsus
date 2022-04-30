@@ -5,21 +5,25 @@
   padding: 10px;
   margin: 16px;
 
+  max-height: 200px;
+  /* max-width: 250px; */
+  box-sizing: content-box;
+
   display: flex;
   flex-direction: column;
-  position:relative;
+  position: relative;
 }
 
 .keep h1 {
   font-size: 1rem;
   margin-bottom: 6px;
   text-align: center;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .keep p {
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-top: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -37,9 +41,10 @@
   align-self: flex-end;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  padding: 10px;
+  gap: 5px;
 
-  position:absolute;
+  position: absolute;
   bottom: 1px;
 }
 
@@ -51,14 +56,14 @@
   position: relative;
 }
 
-.edit-container .email-keep{
-  border:none;
-  margin:0;
-  padding:0;
+.edit-container .email-keep {
+  border: none;
+  margin: 0;
+  padding: 0;
   background-color: inherit;
 }
 
-.edit-container .email-keep::before{
+.edit-container .email-keep::before {
   font-family: "fa-solid";
   content: "\f0e0";
   font-size: 20px;
@@ -86,7 +91,15 @@
   font-size: 20px;
 }
 
-iframe, .keep img {
+iframe,
+.keep img {
   max-width: 100%;
   margin-bottom: 15px;
+  margin-top: 10px;
+  max-height:60%;
+  object-fit: contain;
+}
+
+.keep img{
+  max-height:60%;
 }
