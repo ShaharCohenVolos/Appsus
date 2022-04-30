@@ -27,7 +27,7 @@ export class EmailApp extends React.Component {
     })
 
     this.removeComposeEvent = eventBusService.on('send-email', (email) => {
-      emailService.addEmail(email)
+      emailService.addEmail(email).then(() => eventBusService.emit('user-msg', { txt: 'Email Sent', type: 'success' }))
       this.loadEmails()
     })
   }

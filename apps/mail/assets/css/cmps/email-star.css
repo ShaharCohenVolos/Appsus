@@ -6,6 +6,13 @@
   padding: 0;
   color: var(--clr2);
   cursor: pointer;
+  width: 0px;
+}
+
+@media screen and (min-width:800px) {
+  .email-star {
+    width: unset
+  }
 }
 
 .email-star::before {

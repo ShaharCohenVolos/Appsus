@@ -32,11 +32,9 @@ function query(folder, filter, sortBy) {
   return Promise.resolve(emails)
 }
 
-
 function getUserName() {
   return loggedInUser.fullName
 }
-
 
 function getById(emailId) {
   const emails = _loadFromStorage()
@@ -56,7 +54,7 @@ function getUnreadCount() {
   const emails = _loadFromStorage()
   const unreads = emails.filter(email => {
     return !email.isRead &&
-      !email.isDeleted &&
+      !email.removedAt &&
       email.authorEmail !== loggedInUser.email
   })
   return Promise.resolve(unreads.length)
@@ -72,9 +70,10 @@ function addEmail({ subject, body, to }) {
 }
 
 function deleteEmail(emailId) {
-  const emails = _loadFromStorage()
+  let emails = _loadFromStorage()
   const email = emails.find(email => email.id === emailId)
-  email.isDeleted = true
+  if (email.removedAt) emails = emails.filter(email => email.id !== emailId)
+  else email.removedAt = Date.now()
   _saveToStorage(emails)
   return Promise.resolve()
 }
@@ -118,16 +117,16 @@ function _sortByTitle(emails, isAsc) {
 function _getEmailsFromFolder(emails, folder) {
   switch (folder) {
     case 'inbox':
-      emails = emails.filter(email => email.to === loggedInUser.email && !email.isDeleted)
+      emails = emails.filter(email => email.to === loggedInUser.email && !email.removedAt)
       break
     case 'starred':
       emails = emails.filter(email => email.isStarred)
       break
     case 'sent':
-      emails = emails.filter(email => email.authorEmail === loggedInUser.email && !email.isDeleted)
+      emails = emails.filter(email => email.authorEmail === loggedInUser.email && !email.removedAt)
       break
     case 'trash':
-      emails = emails.filter(email => email.isDeleted)
+      emails = emails.filter(email => email.removedAt)
       break
   }
   return emails
@@ -162,13 +161,13 @@ function _loadFromStorage() {
   return storageService.loadFromStorage(KEY)
 }
 
-function _makeEmail(subject, body, isRead, isDeleted, isStarred, sentAt, to, authorName, authorEmail) {
+function _makeEmail(subject, body, isRead, removedAt, isStarred, sentAt, to, authorName, authorEmail) {
   return {
     id: utilService.makeId(),
     subject,
     body,
     isRead,
-    isDeleted,
+    removedAt,
     isStarred,
     sentAt,
     to,
@@ -183,7 +182,7 @@ function _makeEmails() {
       'Miss you!',
       'Would love to catch up sometimes',
       true,
-      false,
+      null,
       true,
       Date.now(),
       'momo@momo.com',
@@ -194,7 +193,7 @@ function _makeEmails() {
       'How are you?',
       'How are you doing',
       true,
-      false,
+      null,
       false,
       1641146016652, 'bob@gmail.com',
       loggedInUser.fullName,
@@ -204,7 +203,7 @@ function _makeEmails() {
       'Check out new APIs on RapidAPI',
       "We're constantly adding new APIs to the RapidAPI Hub. Search the Hub and see what you're missing out on!",
       false,
-      false,
+      null,
       false,
       1644346016652,
       loggedInUser.email,
@@ -215,7 +214,7 @@ function _makeEmails() {
       'There’s a podcast for everyone. Find yours.',
       "Want to know what's good when it comes to podcasts?",
       false,
-      false,
+      null,
       false,
       1611146016652,
       loggedInUser.email,
@@ -226,7 +225,7 @@ function _makeEmails() {
       'Car Extended Warranty',
       'We\'ve been trying to reach you concerning your vehicle\'s extended warranty',
       false,
-      true,
+      Date.now(),
       false,
       1574346016652,
       loggedInUser.email,
@@ -237,7 +236,7 @@ function _makeEmails() {
       'Lorem Ipsum',
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       true,
-      true,
+      Date.now(),
       false,
       0,
       loggedInUser.email,
@@ -248,7 +247,7 @@ function _makeEmails() {
       'Your Dropbox is lonely. Add some files!',
       "Add files to your Dropbox Once your files are in Dropbox, they’ll be waiting for you anywhere you install the app—like your computer, phone, or tablet. Your files will also be securely backed up and easy to share, no matter what type of files they are.",
       true,
-      false,
+      null,
       true,
       1574346016652,
       loggedInUser.email,
@@ -259,7 +258,7 @@ function _makeEmails() {
       'Important policy updates coming to Discord',
       "Hey there, Some important changes are coming to Discord: we’re updating our Terms of Service, Privacy Policy, and Community Guidelines. These changes will take effect on March 28, 2022. We’re letting you know ahead of time so you can learn what’s changing. Here are the main things to know:  How we use your information We’ve updated our Privacy Policy to provide better clarity on what information we collect and how we use and share it.How we describe our services As Discord has evolved, it has become clear that not all communities on Discord are the same. We want users to understand the difference between posting in public and private spaces on Discord and to choose the appropriate space, features, and settings for them and their messages. New and clearer rules for prohibited content Our Community Guidelines now officially prohibit misinformation and disinformation, malicious impersonation, and better define spam and platform manipulation. We encourage you to read the updated documents in full. We’ve also summarized some of the most important changes in a post on the Discord Blog.These policies will be in effect on March 28, 2022. Using Discord on or after that date means you agree to these changes. Thanks for helping us build a place where everyone can belong.Discord",
       true,
-      false,
+      null,
       true,
       Date.now() - 100000,
       loggedInUser.email,
@@ -271,6 +270,7 @@ function _makeEmails() {
       'Hello!',
       "Hello there",
       true,
+      false,
       false,
       0,
       'world@universe.all',
