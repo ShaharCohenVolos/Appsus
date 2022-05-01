@@ -12,6 +12,7 @@
   padding-right: 1em;
   align-items: center;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .user-msg .msg {
