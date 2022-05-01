@@ -18,6 +18,7 @@ export class EmailCompose extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.draftIntervalId)
+    this.draftIntervalId = null
     this.editDraftEvent()
   }
 
@@ -31,14 +32,13 @@ export class EmailCompose extends React.Component {
 
   onStartComposing = () => {
     this.setState({ email: { to: '', subject: '', body: '' } }, this.makeDraft)
-    this.draftIntervalId = null
-
   }
 
   onStopComposing = () => {
     this.updateDraft(this.state.email)
     this.setState({ email: null })
     clearInterval(this.draftIntervalId)
+    this.draftIntervalId = null
   }
 
   onSendMail = (ev) => {
@@ -46,6 +46,7 @@ export class EmailCompose extends React.Component {
     eventBusService.emit('send-email', this.state.email)
     this.setState({ email: null })
     clearInterval(this.draftIntervalId)
+    this.draftIntervalId = null
   }
 
   makeDraft = () => {
