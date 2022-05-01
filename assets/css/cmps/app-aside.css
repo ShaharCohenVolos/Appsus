@@ -10,7 +10,6 @@
 
 @media screen and (min-width:800px) {
   .app-aside {
-    z-index: 0;
     width: 256px;
     top: 0;
     padding-top: 70px;

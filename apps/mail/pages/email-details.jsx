@@ -72,7 +72,7 @@ export class EmailDetails extends React.Component {
             <h3 className="author-email">{email.authorEmail}</h3>
           </div>
           <h4 className="sent-at">{date}</h4>
-          <p className="body">{email.body}</p>
+          <pre className="body">{email.body}</pre>
         </main>
       </div>
     </section>

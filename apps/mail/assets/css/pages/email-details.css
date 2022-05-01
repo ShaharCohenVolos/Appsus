@@ -44,10 +44,8 @@
 .email-details header {
   display: flex;
   justify-content: space-between;
-  padding-right: 1em;
-  padding-left: 1em;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding: .625rem;
+  padding-top: 2rem;
 }
 
 @media screen and (min-width: 800px) {
@@ -146,4 +144,7 @@
 
 .email-details .body {
   padding: 0;
+  font-family: 'roboto-regular';
+  white-space: pre-wrap;
+  width: 100%;
 }

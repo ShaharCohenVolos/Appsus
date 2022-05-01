@@ -1,7 +1,8 @@
 .email-preview {
   display: flex;
   flex-direction: column;
-  padding: .625em;
+  align-items: flex-start;
+  padding: .625em 1rem;
   border-block-end: var(--clr2) 1px solid;
   cursor: pointer;
   color: var(--clr1);
@@ -11,15 +12,23 @@
   height: unset;
 }
 
+.email-preview>* {
+  font-size: .875rem;
+  z-index: 1;
+}
+
 @media screen and (min-width:800px) {
   .email-preview {
     flex-direction: row;
     height: 40px;
+    align-content: center;
   }
 }
 
 .email-preview:hover {
   box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  position: relative;
+
 }
 
 .email-preview:hover .email-star {
@@ -28,6 +37,7 @@
 
 .email-preview .btn-container {
   display: none;
+  height: 100%;
 }
 
 @media screen and (min-width:800px) {
@@ -35,21 +45,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: .625em;
   }
 
   .email-preview:hover .sent-at {
     display: none;
   }
-
 }
 
 .email-preview .btn-container>* {
   background: none;
   border: none;
-  color: var(--clr1);
-  font-size: 1em;
-  padding: 8px;
+  color: var(--clr3);
+  font-size: 1rem;
+  height: 40px;
+  width: 40px;
 }
 
 .email-preview .btn-container>*:hover {
@@ -74,14 +83,18 @@
 
 .email-preview .author-name {
   max-width: 200px;
-  font-size: 1rem;
+
   width: 100%;
   text-overflow: ellipsis;
 
 }
 
+.email-preview.draft .author-name {
+  color: var(--brndclr);
+}
+
 .email-preview .subject {
-  font-size: 1rem;
+  /* font-size: 1rem; */
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -90,7 +103,7 @@
   flex: 1;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   font-weight: unset;
   color: var(--clr3);
   width: 100%;
@@ -98,6 +111,7 @@
 
 .email-preview .sent-at {
   position: absolute;
+  font-size: .75rem;
   top: 5px;
   right: 5px;
 }
@@ -106,7 +120,7 @@
   .email-preview .sent-at {
     position: static;
     padding-inline-start: 1em;
-    font-size: .9em;
+    /* font-size: .9em; */
   }
 }
 

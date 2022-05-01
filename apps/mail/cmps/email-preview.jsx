@@ -1,4 +1,5 @@
 import { emailUtilService } from '../services/email.util.service.js'
+import { eventBusService } from '../../../services/event-bus-service.js'
 import { emailService } from '../services/email.service.js'
 import { EmailStar } from './email-star.jsx'
 const { withRouter } = ReactRouterDOM
@@ -10,13 +11,23 @@ class _EmailPreview extends React.Component {
     this.props.history.push(`/email/${match.params.folder}/${email.id}`)
   }
 
+  editDraft = () => {
+    const { email } = this.props
+    eventBusService.emit('edit-draft', email)
+  }
+
   render() {
     const { email } = this.props
     const readStatus = email.isRead ? 'read' : 'unread'
-    const authorName = (email.authorName === emailService.getUserName()) ? `To: ${email.to}` : email.authorName
+    let draftClass
+    let authorName = (email.authorName === emailService.getUserName()) ? `To: ${email.to}` : email.authorName
+    if (email.isDraft) {
+      authorName = 'Draft'
+      draftClass = 'draft'
+    }
 
-    return <section onClick={this.openMail}  >
-      <article className={`email-preview ${readStatus}`} >
+    return <section onClick={email.isDraft ? this.editDraft : this.openMail}  >
+      <article className={`email-preview ${readStatus} ${draftClass}`} >
         <EmailStar email={email} onStarEmail={this.props.onStarEmail} />
         <h1 className="author-name">{authorName}</h1>
         <h1 className="subject">{email.subject}</h1>
