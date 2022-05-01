@@ -51,7 +51,7 @@ const gKeeps = [
         }
     },
     {
-        id: "n101",
+        id: "n105",
         type: "note-txt",
         isPinned: true,
         title: "Hello",
@@ -61,7 +61,7 @@ const gKeeps = [
         }
     },
     {
-        id: "n102",
+        id: "n106",
         type: "note-img",
         title: "From that time...",
         content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wd-TtnQms_MhwwwzlSKXIF-M28qp7ZblXg&usqp=CAU",
@@ -70,7 +70,7 @@ const gKeeps = [
         }
     },
     {
-        id: "n103",
+        id: "n107",
         type: "note-todos",
         title: "todos",
         content: "Hello, To, React, From, JS",
@@ -79,7 +79,43 @@ const gKeeps = [
         }
     }, 
        {
-        id: "n104",
+        id: "n108",
+        type: "note-vid",
+        title: "Witcher Logic",
+        content: "https://www.youtube.com/embed/ldtZMgyPXmc",
+        style: {
+        backgroundColor: "#ffffff",
+        }
+    }, 
+       {
+        id: "n109",
+        type: "note-todos",
+        title: "ABCs",
+        content: "a, b, c, d, e, f, g",
+        style: {
+        backgroundColor: "#ffffff",
+        }
+    }, 
+       {
+        id: "n110",
+        type: "note-img",
+        title: "Forest",
+        content: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6g7pOfhliG4v6-s_xaTmTAjJyhXKe_g5JSg&usqp=CAU",
+        style: {
+        backgroundColor: "#ffffff",
+        }
+    }, 
+       {
+        id: "n111",
+        type: "note-note",
+        title: "Lorem",
+        content: "Lorem Ipsum",
+        style: {
+        backgroundColor: "#ffffff",
+        }
+    }, 
+       {
+        id: "n112",
         type: "note-vid",
         title: "Witcher Logic",
         content: "https://www.youtube.com/embed/ldtZMgyPXmc",

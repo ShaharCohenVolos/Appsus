@@ -29,6 +29,9 @@ export class KeepNavList extends React.Component {
           <NavLink to="/keep/note-img" 
           onClick={() => this.onSetFilterBy('note-img')}>
             Pictures</NavLink>
+          <NavLink to="/keep/note-vid" 
+          onClick={() => this.onSetFilterBy('note-vid')}>
+            Videos</NavLink>
           <NavLink to="/keep/note-todos" 
           onClick={() => this.onSetFilterBy('note-todos')}>
             Todo-Lists</NavLink>
