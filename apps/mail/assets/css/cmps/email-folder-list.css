@@ -39,33 +39,47 @@
   color: var(--brndclr);
 }
 
-.email-folder-list *::before {
+.email-folder-list .icon {
+  width: 20px;
+  margin-right: 1.25rem;
   font-size: 1rem;
-  margin-right: 1rem;
+  color:
+    var(--clr3);
 }
 
-.email-folder-list .inbox::before {
+.email-folder-list .active .icon {
+  color: var(--brndclr);
+}
+
+.email-folder-list .inbox .icon::before {
   font-family: 'fa-solid';
-  content: '\f01c\00A0\00A0';
+  content: '\f01c';
+  padding: 0;
 
 }
 
-.email-folder-list .starred::before {
+.email-folder-list .starred .icon::before {
   font-family: 'fa-solid';
-  content: '\f005\00A0\00A0';
+  content: '\f005';
 }
 
-.email-folder-list .sent::before {
+.email-folder-list .draft .icon::before {
   font-family: 'fa-solid';
-  content: '\f064\00A0\00A0';
+  content: '\f15b';
 }
 
-.email-folder-list .trash::before {
+
+.email-folder-list .sent .icon::before {
   font-family: 'fa-solid';
-  content: '\f1f8\00A0\00A0';
+  content: '\f064';
 }
 
-.email-folder-list .all-mail::before {
+.email-folder-list .trash .icon::before {
   font-family: 'fa-solid';
-  content: '\f0e0\00A0\00A0';
+  content: '\f1f8';
+}
+
+.email-folder-list .all-mail .icon::before {
+  font-family: 'fa-solid';
+  content: '\f0e0';
 }

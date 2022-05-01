@@ -24,11 +24,12 @@ export class EmailFolderList extends React.Component {
     const { unread } = this.state
 
     return <nav className="email-folder-list">
-      <NavLink to="/email/inbox" className="inbox">Inbox <h1 className="unread-count">{unread}</h1></NavLink>
-      <NavLink to="/email/starred" className="starred">Starred</NavLink>
-      <NavLink to="/email/sent" className="sent">Sent</NavLink>
-      <NavLink to="/email/trash" className="trash">Trash</NavLink>
-      <NavLink to="/email/all" className="all-mail">All Mail</NavLink>
+      <NavLink to="/email/inbox" className="inbox"><div className="icon"></div>Inbox<h1 className="unread-count">{unread}</h1></NavLink>
+      <NavLink to="/email/starred" className="starred"><div className="icon"></div>Starred</NavLink>
+      <NavLink to="/email/sent" className="sent"><div className="icon"></div>Sent</NavLink>
+      <NavLink to="/email/draft" className="draft"><div className="icon"></div>Draft</NavLink>
+      <NavLink to="/email/trash" className="trash"><div className="icon"></div>Trash</NavLink>
+      <NavLink to="/email/all" className="all-mail"><div className="icon"></div>All Mail</NavLink>
     </nav>
   }
 }
