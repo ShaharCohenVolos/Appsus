@@ -18,6 +18,7 @@
   .app-header {
     height: 70px;
     flex-direction: row;
+    z-index: 100;
   }
 }
 

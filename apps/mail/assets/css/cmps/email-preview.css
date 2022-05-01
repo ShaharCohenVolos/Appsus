@@ -14,6 +14,7 @@
 
 .email-preview>* {
   font-size: .875rem;
+  z-index: 1;
 }
 
 @media screen and (min-width:800px) {
@@ -26,6 +27,8 @@
 
 .email-preview:hover {
   box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  position: relative;
+
 }
 
 .email-preview:hover .email-star {
